@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import App from "./App.jsx";
 import About from "./pages/About.jsx";
+import Notifications from "./pages/Notification.jsx";
 import Error from "./pages/Error.jsx";
 import Teacher from "./pages/Teacher/Teacher.jsx";
 import Student from "./pages/Student/Student.jsx";
@@ -18,6 +19,7 @@ export default function Approuter() {
           <Route element={<ScreenWithNavbar/>} >
           <Route index element={<App />} />
           <Route path="/About" element={<About />} />
+          <Route path="/Notification" element={<Notifications />} />
           <Route path="/*" element={<Error />} />
 
 

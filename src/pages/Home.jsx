@@ -6,7 +6,7 @@ import React from "react";
 function Home() {
   return (
     <div className=" bg-gray-100 min-h-screen">
-      <h1 className=" text-blue-900 text-2xl text-center">
+      <h1 className=" text-headingColor text-2xl text-center">
         Welcome to the Home Page!
       </h1>
 
@@ -16,10 +16,8 @@ function Home() {
         <h1 className="font-serif text-subHeadingColor text-lg md:text-2xl lg:text-4xl ">Professional Sub Heading</h1>
         <br/>
 
-        <h1 className="text-3xl font-sans">Hello world</h1>
-        <h1 className="text-2xl">Hello world</h1>
-        <h1 className="text-xl">Hello world</h1>
-        <h1 className="text-sm">Hello world</h1>
+        <h1 className="text-xl text-textColor">Hello world</h1>
+        <h1 className="text-sm text-textColor">Hello world</h1>
         <p className="text-textColor ">This is professional body text.</p>
 
 

@@ -2,7 +2,7 @@ import React from "react";
 
 const Notifications = () => {
   return (
-    <div className="mt-5">
+    <div className="min-h-screen mt-5">
       <h1 className="text-2xl font-bold text-center">
         Welcome to the Notification Page!
       </h1>
