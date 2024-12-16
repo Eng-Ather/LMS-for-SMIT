@@ -4,7 +4,8 @@ import saylani from "../images/saylani.png";
 
 function Navbar() {
   return (
-    <nav className="flex justify-between items-center p-2 bg-primary">
+    <nav className="p-2 bg-navbarColor border border-subHeadingColor border-b-8 flex justify-between items-center ">
+     
       {/* for Logo/ image */}
       <div className="flex sm:mx-4 md:mx-8 lg:mx-10">
         <span>
@@ -26,14 +27,14 @@ function Navbar() {
       <div className="flex items-center justify-center gap-4 sm:mx-4 md:mx-8 lg:mx-10">
         <Link
           to="/"
-          className="text-headingColor text-shadow-white font-semibold text-sm  md:text-base lg:text-lg hover:text-white hover:underline decoration-2 underline-offset-4"
+          className="text-headingColor text-shadow-white font-semibold text-sm md:text-base lg:text-lg hover:text-white "
         >
           Home
         </Link>
 
         <Link
           to="/About"
-          className="text-headingColor text-shadow-white font-semibold text-sm md:text-base lg:text-lg  hover:text-white hover:underline decoration-2 underline-offset-4"
+          className="text-headingColor text-shadow-white font-semibold text-sm md:text-base lg:text-lg  hover:text-white "
         >
           About
         </Link>
