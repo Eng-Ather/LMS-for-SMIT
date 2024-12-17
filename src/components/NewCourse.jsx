@@ -5,9 +5,9 @@
  <h4 className="font-serif text-headingColor text-lg md:text-2xl lg:text-3xl mb-4">
   New Addmission</h4>
  <ul>
-   <li className="border border-red-500 flex flex-col md:flex-row items-center justify-between border-b">
+   <li className=" flex flex-col md:flex-row items-center justify-between border-b">
      {/* Content Box */}
-     <div className="border border-red  flex flex-col md:flex-row  md:items-center  gap-4">
+     <div className="  flex flex-col md:flex-row  md:items-center  gap-4">
        <div className="flex flex-col">
          {/* Title */}
          <h5 className="text-lg font-semibold textColor">
@@ -38,7 +38,7 @@
      </div>
 
      {/* Image Box */}
-     <div className="border border-red-500 w-64 md:w-52 h-52 bg-gray-200 rounded-lg ">
+     <div className=" w-64 md:w-52 h-52 bg-gray-200 rounded-lg ">
        <img
          src="https://via.placeholder.com/150x100"
          alt="Admission"
