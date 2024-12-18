@@ -9,14 +9,14 @@ const UpcommingEvent = ()=>{
         <ul className="space-y-3">
           <li className="flex items-center">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-            <p className="textColor">
+            <p >
               Join us for our upcoming Annual IT Workshop on February 10th.
               Register now to secure your spot!
             </p>
           </li>
           <li className="flex items-center">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-            <p className="textColor">
+            <p >
               Check out our new professional development workshops.
             </p>
           </li>
