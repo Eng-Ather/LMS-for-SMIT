@@ -108,7 +108,7 @@ function Footer() {
         {/* Bottom Section: Copyright */}
         <div className=" mt-4">
           <hr className="border-gray-500" />
-          <p className=" text-center text-sm ">
+          <p className=" text-center text-sm px-1">
             &copy; 2024 LMS for Gulshan Campus SMIT with <b> TEAM - I. </b> All Rights
             Reserved.
           </p>
