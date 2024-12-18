@@ -1,4 +1,4 @@
-import Chairmenimage from "../images/Chairmenimage.JPG";
+import Chairmenimage from "../images/Chairmenimage.jpg";
 
 const ChairmanMessage = () => {
   return (
