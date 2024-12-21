@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../images/logo.png";
 import saylani from "../images/saylani.png";
+import LoginModal from "./LoginModal";
 
 function Navbar() {
   return (
@@ -25,6 +26,9 @@ function Navbar() {
       {/*--------------------- for navigation links -------------------------------*/}
 
       <div className="flex items-center justify-center gap-4 sm:mx-4 md:mx-8 lg:mx-10">
+        
+        <LoginModal/>
+        
         <Link
           to="/"
           className="text-headingColor text-shadow-white font-semibold text-sm md:text-base lg:text-lg hover:text-white "
@@ -32,12 +36,12 @@ function Navbar() {
           Home
         </Link>
 
-        <Link
+        {/* <Link
           to="/About"
           className="text-headingColor text-shadow-white font-semibold text-sm md:text-base lg:text-lg  hover:text-white "
         >
           About
-        </Link>
+        </Link> */}
         {/* "About Saylani" external link */}
         <Link
           className=" w-28 h-8 lg:w-32 lg:h-10"
