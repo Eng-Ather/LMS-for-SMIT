@@ -5,7 +5,6 @@ import saylani from "../images/saylani.png";
 function Navbar() {
   return (
     <nav className="p-2 bg-navbarColor border border-subHeadingColor border-b-8 flex justify-between items-center ">
-     
       {/* for Logo/ image */}
       <div className="flex sm:mx-4 md:mx-8 lg:mx-10">
         <span>
