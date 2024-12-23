@@ -2,18 +2,18 @@ import Chairmenimage from "../images/Chairmenimage.jpg";
 
 const ChairmanMessage = () => {
   return (
-    <div className="bg-gray-50 shadow-lg rounded-lg p-6 md:flex md:items-center">
+    <div className="bg-gray-50 shadow-lg rounded-lg p-3 md:flex md:items-center">
       {/* Text Content */}
       <div className="md:w-2/3 md:pr-6">
         <h4 className="font-serif text-headingColor text-3xl md:text-4xl text-center">
           Maulana Bashir Farooqi
         </h4>
 
-        <h3 className="font-serif text-center text-subHeadingColor text-lg md:text-2xl lg:text-3xl mb-2">
+        <h3 className="font-serif text-center text-subHeadingColor text-lg md:text-2xl mb-2">
           Chairman S.M.I.T
         </h3>
 
-        <p className="text-base text-v leading-relaxed">
+        <p className="text-md text-v leading-relaxed">
           Alhamdollilah, Allah has accorded Saylani Welfare with the highest
           favor by sending those people our way who follow the teachings of the
           Holy Quran and Hadith, give zakat, fidyah, fitrah, khairat and other

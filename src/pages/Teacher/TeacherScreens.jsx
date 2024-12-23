@@ -10,7 +10,6 @@ export default function TeacherScreens() {
         <div className="font-serif text-headingColor h-16 content-center mx-auto text-2xl ">
           STUDENT
         </div>
-
         <div
           onClick={() => navigate("/aboutcourse")}
           className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border p-4  "
