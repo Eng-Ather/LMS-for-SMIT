@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaPhone, FaEnvelope, FaYoutube, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-
 import footerImage from "../images/footerImage.jpg";
 import logo from "../images/logo.png";
 

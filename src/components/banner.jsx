@@ -4,7 +4,7 @@ const Banner = () => {
     <div
     //   className="w-full bg-gradient-to-r from-gray-500 to-green-500 rounded-lg py-1 text-white"
      
-      className=" bg-subHeadingColor shadow-lg rounded-lg  "
+      className=" bg-subHeadingColor shadow-lg rounded-lg py-2 px-3"
      
       style={{
         animation: "fadeInSlide 2s ease-in-out",
