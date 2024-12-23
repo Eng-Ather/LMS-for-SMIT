@@ -4,31 +4,27 @@ import App from "./App.jsx";
 import About from "./pages/About.jsx";
 import Notifications from "./pages/Notification.jsx";
 import Error from "./pages/Error.jsx";
-import Teacher from "./pages/Teacher/Teacher.jsx";
-import Student from "./pages/Student/Student.jsx";
-import Footer from "./components/Footer.jsx";
-import ScreenWithNavbar from "./components/ScreenWithNavbar.jsx";
-import ScreenWithoutNavbar from "./components/ScreenWithoutNavbar.jsx";
 import Adminscreens from "./pages/Admin/Adminscreens.jsx";
-import MainScreen from "./pages/Admin/MainScreen.jsx";
-import Addcourse from "./pages/Admin/Addcourse.jsx";
 import AddStudent from "./pages/Admin/AdminComponents/AddStudent.jsx";
 import NewAnnoucements from "./pages/Admin/AdminComponents/NewAnnoucements.jsx";
+import Addcourse from "./pages/Admin/AdminComponents/Addcourse.jsx";
+import MainScreen from "./pages/Admin/AdminComponents/MainScreen.jsx";
+import ScreensWithNavFooter from "./components/ScreensWithNavFooter.jsx";
+import Studentscreens from "./pages/Student/Studentscreens.jsx";
+import StudentMainScreen from "./pages/Student/StudentComponents/StudentMainScreen.jsx";
+import TeacherScreens from "./pages/Teacher/TeacherScreens.jsx";
+import TeacherMainScreen from "./pages/Teacher/TeacherComponents/TeacherMainScreen.jsx";
 
 export default function Approuter() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route element={<ScreenWithNavbar />}>
+          <Route element={<ScreensWithNavFooter />}>
             <Route index element={<App />} />
             <Route path="/About" element={<About />} />
             <Route path="/Notification" element={<Notifications />} />
             <Route path="/*" element={<Error />} />
-          </Route>
-          <Route element={<ScreenWithoutNavbar />}>
-            <Route path="/teacher" element={<Teacher />} />
-            <Route path="/student" element={<Student />} />
           </Route>
           <Route element={<Adminscreens />}>
             <Route path="/admin" element={<MainScreen />} />
@@ -36,8 +32,13 @@ export default function Approuter() {
             <Route path="/addstudent" element={<AddStudent />} />
             <Route path="/newannouncement" element={<NewAnnoucements />} />
           </Route>
+          <Route element={<Studentscreens />}>
+            <Route path="/student" element={<StudentMainScreen />} />
+          </Route>
+          <Route element={<TeacherScreens />}>
+            <Route path="/teacher" element={<TeacherMainScreen />} />
+          </Route>
         </Routes>
-        <Footer />
       </BrowserRouter>
     </>
   );
