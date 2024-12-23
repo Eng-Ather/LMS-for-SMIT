@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import AboutSectionImage from "../images/AboutSectionImage.jpg"
 
-
 const AboutSMIT = () => {
   const navigate = useNavigate(); // Create navigate function
 
@@ -11,8 +10,8 @@ const AboutSMIT = () => {
   };
 
   return (
-    <div className="bg-gray-50 p-8 shadow-lg rounded-lg">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="bg-gray-50 p-1 shadow-lg rounded-lg">
+      <div className=" max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 ">
         {/* Left Section - Image */}
         <div className="relative">
           <img
@@ -23,25 +22,31 @@ const AboutSMIT = () => {
         </div>
 
         {/* Right Section - About Text */}
-        <div className="flex flex-col justify-center">
-          <h2 className="font-serif text-headingColor text-lg md:text-2xl lg:text-3xl mb-4">
+        <div className="flex flex-col justify-center p-4  w-full" 
+           // style={{backgroundImage: `url(${AboutSectionBackgroundImage})`}}
+        >
+          <h2 className="font-serif text-headingColor text-3xl md:text-4xl mb-4">
             About Saylani Mass IT Training Program (SMIT)
           </h2>
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-md mb-6">
             The Saylani Mass IT Training Program (SMIT) is a pioneering
             initiative to empower individuals through high-quality, free-of-cost
             IT education. SMIT provides technical training in a variety of
-            fields such as web development, data science, cybersecurity, and
-            software engineering. The goal of SMIT is to equip students with the
+            fields such as Web and App development, Data science, Cybersecurity,CCNA,
+             graphic desiging, Fluter, 3D Animation, UI/UX Designing Laptop Reparing, Mobile Reparing 
+             Vocational Trainings and software engineering. The goal of SMIT is to equip students with the
             skills and knowledge they need to excel in the rapidly growing tech
-            industry.
-          </p>
-          <p className="text-lg text-gray-600 mb-6">
-            With a team of experienced trainers, SMIT offers an engaging
+            industry. With a team of experienced trainers, SMIT offers an engaging
             curriculum that prepares students for real-world challenges. The
             program aims to foster a new generation of IT professionals,
             equipped to take on roles in the global digital economy.
           </p>
+          {/* <p className="text-md text-gray-600 mb-6 hidden md:block">
+            With a team of experienced trainers, SMIT offers an engaging
+            curriculum that prepares students for real-world challenges. The
+            program aims to foster a new generation of IT professionals,
+            equipped to take on roles in the global digital economy.
+          </p> */}
          
           {/* button to  navigate on about page */}
           <button

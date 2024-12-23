@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FaUser} from "react-icons/fa";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 function LoginModal() {
   // State to manage modal visibility
@@ -15,12 +17,13 @@ function LoginModal() {
       {/* Main content */}
       <div className="text-center">
         {/* Open login Modal button */}
-        <button
+        <FaUser
           onClick={openModal}
-          className="bg-blue-600 font-serif font-bold text-white px-6 py-2 rounded-lg transition-transform duration-500 transform hover:scale-125"
-        >
-          Login
-        </button>
+          className="text-xl text-white cursor-pointer transition-transform duration-500 transform hover:scale-125"
+          aria-label="Login"
+          data-tooltip-id="login-tooltip"
+        />
+        <ReactTooltip id="login-tooltip" place="bottom" content="Click to Login" />
       </div>
 
       {/* Modal */}
