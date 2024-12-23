@@ -21,7 +21,7 @@ export default function TeacherScreens() {
         </div>
 
         <div className="font-serif font-semibold text-headingColor bg-gray-400 border p-4  ">
-          Option
+          Option3
         </div>
       </div>
 
