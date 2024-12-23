@@ -15,21 +15,21 @@ function Adminscreens() {
           onClick={() => navigate("/admin")}
           className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border p-4  "
         >
-          Admin Panel
+          Dashboard
         </div>
 
         <div
           onClick={() => navigate("/addstudent")}
           className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border p-4  "
         >
-          Add Student
+          Students
         </div>
 
         <div
           onClick={() => navigate("/addcourse")}
           className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border p-4  "
         >
-          Add Course
+          Courses
         </div>
 
         <div
@@ -38,33 +38,18 @@ function Adminscreens() {
         >
           Announcements
         </div>
+        <div
+          onClick={() => navigate("/instructors")}
+          className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border p-4  "
+        >
+          Instructors
+        </div>
       </div>
 
       {/* /center box */}
-      <div className="flex flex-col w-3/5 border ">
+      <div className="flex flex-col w-4/5 border ">
+        <div className="border border-black h-20"></div>
         <Outlet />
-      </div>
-
-      {/* Right side block */}
-      <div className="bg-gray-200 flex flex-start flex-col w-1/5">
-        <div className="font-serif text-headingColor h-16 content-center mx-auto text-2xl ">
-          News
-        </div>
-
-        <div className="font-serif font-semibold text-headingColor bg-gray-400 h-32 my-4 border rounded p-4  ">
-          Option
-        </div>
-
-        <div className="font-serif font-semibold text-headingColor bg-gray-400 h-32 my-4 border rounded p-4  ">
-          Option
-        </div>
-
-        <div className="font-serif font-semibold text-headingColor bg-gray-400 h-32 my-4 border rounded p-4  ">
-          Option
-        </div>
-        <div className="font-serif font-semibold text-headingColor bg-gray-400 h-32 my-4 border rounded p-4  ">
-          Option
-        </div>
       </div>
     </div>
   );
