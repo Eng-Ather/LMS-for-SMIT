@@ -39,6 +39,7 @@ function Adminscreens() {
           Announcements
         </div>
         <div
+          onClick={() => navigate("/instructors")}
           className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border p-4  "
         >
           Instructors
@@ -47,10 +48,9 @@ function Adminscreens() {
 
       {/* /center box */}
       <div className="flex flex-col w-4/5 border ">
-      <div className="border border-black h-20"></div>
+        <div className="border border-black h-20"></div>
         <Outlet />
       </div>
-
     </div>
   );
 }
