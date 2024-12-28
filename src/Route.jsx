@@ -27,7 +27,7 @@ import TeacherNotifications from "./pages/Teacher/TeacherComponents/TeacherNotif
 export default function Approuter() {
   return (
     <>
-      <BrowserRouter>
+      
         <Routes>
           <Route element={<ScreensWithNavFooter />}>
             <Route index element={<App />} />
@@ -63,7 +63,7 @@ export default function Approuter() {
             <Route path="/notifications" element={<TeacherNotifications />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+
     </>
   );
 }
