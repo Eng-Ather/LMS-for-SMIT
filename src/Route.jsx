@@ -63,7 +63,7 @@ export default function Approuter() {
             <Route path="/notifications" element={<TeacherNotifications />} />
           </Route>
         </Routes>
-      
+
     </>
   );
 }
