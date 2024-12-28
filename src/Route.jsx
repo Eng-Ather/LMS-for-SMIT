@@ -14,7 +14,7 @@ import ScreenWithoutNavbar from "./components/ScreenWithoutNavbar.jsx";
 export default function Approuter() {
   return (
     <>
-      <BrowserRouter>
+      
         <Routes>
           <Route element={<ScreenWithNavbar/>} >
           <Route index element={<App />} />
@@ -31,7 +31,7 @@ export default function Approuter() {
           </Route>
         </Routes>
         <Footer/>
-      </BrowserRouter>
+      
     </>
   );
 }

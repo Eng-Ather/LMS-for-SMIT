@@ -1,8 +1,67 @@
+import Password from "antd/es/input/Password";
+import axios from "axios";
 import React, { useState } from "react";
-import { FaUser} from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import { useNavigate } from "react-router";
+// import AppRouts from "./constant/constant.jsx"
+import AppRouts from "../constant/constant.jsx";
+import Cookies from "js-cookie";
 
 function LoginModal() {
+  const [loding, setLoading] = useState();
+  const navigate = useNavigate();
+
+  const handellogin = (e) => {
+    e.preventDefault();
+
+    if (!e.target.email.value || !e.target.password.value) {
+      alert("Please enter both email and password.");
+      return;
+    }
+
+    const obj = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+    setLoading(true);
+
+    axios
+      .post(AppRouts.signin, obj)
+      .then((res) => {
+        // console.log(res.data);
+        console.log(res.data.user.token);
+        console.log(res.data.user.user);
+
+        const token = res?.data?.user?.token;
+        const currentUser = res?.data?.user?.user;
+        setLoading(false);
+        Cookies.set("token", token);
+        // console.log("TOKEN  = " + token);
+
+        // Navigate based on user role
+        switch (currentUser.role) {
+          case "teacher":
+            navigate("/teacher"); // Redirect to teacher page
+            break;
+          case "student":
+            navigate("/student"); // Redirect to student page
+            break;
+          case "admin":
+            navigate("/admin"); // Redirect to admin page
+            break;
+          default:
+            alert("Unknown role, please contact support.");
+            break;
+        }
+      })
+      .catch((error) => {
+        alert("ERROR =>" + error);
+        // console.log(error);
+        setLoading(false);
+      });
+  };
+
   // State to manage modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,7 +82,11 @@ function LoginModal() {
           aria-label="Login"
           data-tooltip-id="login-tooltip"
         />
-        <ReactTooltip id="login-tooltip" place="bottom" content="Click to Login" />
+        <ReactTooltip
+          id="login-tooltip"
+          place="bottom"
+          content="Click to Login"
+        />
       </div>
 
       {/* Modal */}
@@ -34,7 +97,7 @@ function LoginModal() {
               Login to Your Account
             </h4>
             {/* Login Form */}
-            <form>
+            <form onSubmit={handellogin}>
               {/* Email Input */}
               <div className="mb-4">
                 <label
@@ -72,7 +135,8 @@ function LoginModal() {
                 type="submit"
                 className="w-full bg-navbarColor font-serif font-bold text-lg text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
               >
-                Login
+                {loding ? "Loading..." : "Submit"}
+                {/* Login */}
               </button>
             </form>
 
