@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router";
+import {  Routes, Route } from "react-router";
 import App from "./App.jsx";
 import About from "./pages/About.jsx";
 import Notifications from "./pages/Notification.jsx";
@@ -7,6 +7,8 @@ import Error from "./pages/Error.jsx";
 import Adminscreens from "./pages/Admin/Adminscreens.jsx";
 import AddStudent from "./pages/Admin/AdminComponents/AddStudent.jsx";
 import NewAnnoucements from "./pages/Admin/AdminComponents/NewAnnoucements.jsx";
+
+
 import Addcourse from "./pages/Admin/AdminComponents/Addcourse.jsx";
 import MainScreen from "./pages/Admin/AdminComponents/MainScreen.jsx";
 import ScreensWithNavFooter from "./components/ScreensWithNavFooter.jsx";
@@ -24,6 +26,12 @@ import StudentsAssignments from "./pages/Teacher/TeacherComponents/StudentsAssig
 import Instructors from "./pages/Admin/AdminComponents/Instructors.jsx";
 import TeacherNotifications from "./pages/Teacher/TeacherComponents/TeacherNotifications.jsx";
 
+import AssignmentSchedule  from "./pages/Teacher/AssignmentSchedule.jsx";
+import AssignmentCheck  from "./pages/Teacher/AssignmentCheck.jsx";
+import TeacherList from "./pages/Teacher/TeacherList.jsx";
+import Teacher from "./pages/Teacher/Teacher.jsx";
+
+
 export default function Approuter() {
   return (
     <>
@@ -34,6 +42,15 @@ export default function Approuter() {
             <Route path="/About" element={<About />} />
             <Route path="/Notification" element={<Notifications />} />
             <Route path="/*" element={<Error />} />
+          </Route>
+
+          {/* <Route element={<ScreenWithoutNavbar />}> */}
+          <Route>
+            <Route path="/teacher" element={<Teacher />} />
+            <Route path="/teachers" element={<TeacherList />} />
+            <Route path="/assignmentSchedule" element={<AssignmentSchedule />} />
+            <Route path="/assignments" element={<AssignmentCheck />} />
+            {/* <Route path="/student" element={<Student />} /> */}
           </Route>
           <Route element={<Adminscreens />}>
             <Route path="/admin" element={<MainScreen />} />
