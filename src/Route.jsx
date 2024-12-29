@@ -1,5 +1,5 @@
 import React from "react";
-import {  Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router";
 import App from "./App.jsx";
 import About from "./pages/About.jsx";
 import Notifications from "./pages/Notification.jsx";
@@ -19,18 +19,11 @@ import QuizResults from "./pages/Student/StudentComponents/QuizResults.jsx";
 import CourseOutline from "./pages/Student/StudentComponents/CourseOutline.jsx";
 import MaintenanceCharges from "./pages/Student/StudentComponents/MaintenanceCharges.jsx";
 import AttendanceRecords from "./pages/Student/StudentComponents/AttendanceRecords.jsx";
+
 import TeacherScreens from "./pages/Teacher/TeacherScreens.jsx";
-import TeacherMainScreen from "./pages/Teacher/TeacherComponents/TeacherMainScreen.jsx";
 import AboutCourse from "./pages/Teacher/TeacherComponents/AboutCourse.jsx";
-import StudentsAssignments from "./pages/Teacher/TeacherComponents/StudentsAssignments.jsx";
 import Instructors from "./pages/Admin/AdminComponents/Instructors.jsx";
 import TeacherNotifications from "./pages/Teacher/TeacherComponents/TeacherNotifications.jsx";
-
-import AssignmentSchedule  from "./pages/Teacher/AssignmentSchedule.jsx";
-import AssignmentCheck  from "./pages/Teacher/AssignmentCheck.jsx";
-import TeacherList from "./pages/Teacher/TeacherList.jsx";
-import Teacher from "./pages/Teacher/Teacher.jsx";
-
 
 export default function Approuter() {
   return (
@@ -42,15 +35,6 @@ export default function Approuter() {
             <Route path="/About" element={<About />} />
             <Route path="/Notification" element={<Notifications />} />
             <Route path="/*" element={<Error />} />
-          </Route>
-
-          {/* <Route element={<ScreenWithoutNavbar />}> */}
-          <Route>
-            <Route path="/teacher" element={<Teacher />} />
-            <Route path="/teachers" element={<TeacherList />} />
-            <Route path="/assignmentSchedule" element={<AssignmentSchedule />} />
-            <Route path="/assignments" element={<AssignmentCheck />} />
-            {/* <Route path="/student" element={<Student />} /> */}
           </Route>
           <Route element={<Adminscreens />}>
             <Route path="/admin" element={<MainScreen />} />
