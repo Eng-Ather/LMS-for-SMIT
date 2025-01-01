@@ -1,5 +1,9 @@
 import React from "react";
 import { Outlet, useNavigate } from "react-router";
+import {NotificationOutlined, UserOutlined, MenuOutlined} from "@ant-design/icons"
+import { Avatar } from "antd";
+
+
 
 export default function Studentscreens() {
   const navigate = useNavigate();
@@ -45,7 +49,17 @@ export default function Studentscreens() {
       </div>
 
       {/* /center box */}
-      <div className="flex flex-col flex-end w-4/5 border ">
+      <div className="flex flex-col w-4/5 border ">
+        <div className="flex h-20 shadow">
+          <div className="w-10/12 flex h-16 text-4xl items-center justify-center">Welcome Username! </div>
+          <div className="flex items-center justify-end w-2/12"> 
+          <NotificationOutlined
+          className="text-xl mx-3"
+          />
+          <Avatar className="text-xl mx-3" icon={<UserOutlined />} />
+          <MenuOutlined className="text-xl mx-3" />
+          </div>
+        </div>
         <Outlet />
       </div>
     </div>
