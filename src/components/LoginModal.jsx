@@ -4,40 +4,49 @@ import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useNavigate } from "react-router";
-// import AppRouts from "./constant/constant.jsx"
 import AppRouts from "../constant/constant.jsx";
 import Cookies from "js-cookie";
+import { useContext } from "react";
+import { AuthContext } from "../context/context.jsx";
 
 function LoginModal() {
   const [loding, setLoading] = useState();
   const navigate = useNavigate();
 
-  const handellogin = (e) => {
+ // Access user and token from AuthContext
+ const { user, setUser, setToken, setSession } = useContext(AuthContext); 
+  // console.log("User:" , user);
+  // console.log("Token:" , token);
+
+  const handellogin = (e) => {        //Function to be invoked on submit button click
     e.preventDefault();
 
     if (!e.target.email.value || !e.target.password.value) {
-      alert("Please enter both email and password.");
+      alert("Email And Password Both are Required");
       return;
     }
 
     const obj = {
-      email: e.target.email.value,
+      email: e.target.email.value,    
       password: e.target.password.value,
     };
     setLoading(true);
 
-    axios
-      .post(AppRouts.signin, obj)
+    // ******* calling API to get signin
+    axios.post(AppRouts.signin, obj)
       .then((res) => {
-        // console.log(res.data);
-        console.log(res.data.user.token);
-        console.log(res.data.user.user);
-
-        const token = res?.data?.user?.token;
+        const tokenn = res?.data?.user?.token;
         const currentUser = res?.data?.user?.user;
         setLoading(false);
-        Cookies.set("token", token);
-        // console.log("TOKEN  = " + token);
+
+        //****** Update sessionStorage & cookies to maintain tab session 
+        Cookies.set("token", tokenn, {expires: 7});
+        sessionStorage.setItem("tokenForSessionStorage",tokenn)
+        
+        //****** Update token, user state in AuthContext to maintain Auth function
+        setSession(tokenn)
+        setToken(tokenn); 
+        setUser(currentUser); 
 
         // Navigate based on user role
         switch (currentUser.role) {
@@ -136,7 +145,6 @@ function LoginModal() {
                 className="w-full bg-navbarColor font-serif font-bold text-lg text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
               >
                 {loding ? "Loading..." : "Submit"}
-                {/* Login */}
               </button>
             </form>
 

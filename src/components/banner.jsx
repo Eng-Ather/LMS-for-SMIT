@@ -11,8 +11,10 @@ const Banner = () => {
       }}
     >
       <h4 className="font-serif text-center text-white text-2xl md:text-3xl lg:text-4xl  tracking-wide animate-pulse">
-        LMS FOR GULSHAN CAMPUS
+        CMS FOR GULSHAN CAMPUS
       </h4>
+
+     
       <style>
         {`
           @keyframes fadeInSlide {
