@@ -1,3 +1,9 @@
+
+import React from "react";
+import { Outlet, useNavigate } from "react-router";
+import {NotificationOutlined, UserOutlined, MenuOutlined} from "@ant-design/icons"
+import { Avatar } from "antd";
+
 import { useEffect } from "react";
 import React from "react";
 import { Outlet, useNavigate } from "react-router";
@@ -5,6 +11,7 @@ import LogoutButton from "../../components/logout";
 import RoleBasedNavigation from "../../components/RoleBasedNavigation";
 import { useContext } from "react";
 import { AuthContext } from "../../context/context.jsx";
+
 
 function Adminscreens() {
   const navigate = useNavigate();
@@ -20,10 +27,14 @@ function Adminscreens() {
     },[user, navigate]);
 
   return (
+
+    <div className="h-screen bg-gray-100 flex shadow">
+      {/* Left Side block */}
     <div className="h-screen bg-gray-100 flex shadow ">
      
 
       {/**************************     Left Side block    ************************/}
+
       <div className="bg-gray-200 flex flex-start flex-col w-1/5">
         
         {/* side block heading */}
@@ -76,9 +87,19 @@ function Adminscreens() {
 
       {/*************************   center box    ********************************/}
       <div className="flex flex-col w-4/5 border ">
-        <div className="border border-black h-20"></div>
+        <div className="flex h-20 shadow">
+          <div className="w-10/12 flex h-16 text-4xl items-center justify-center">Welcome Username! </div>
+          <div className="flex items-center justify-end w-2/12"> 
+          <NotificationOutlined
+          className="text-xl mx-3"
+          />
+          <Avatar className="text-xl mx-3" icon={<UserOutlined />} />
+          <MenuOutlined className="text-xl mx-3" />
+          </div>
+        </div>
         <Outlet />
       </div>
+    </div>
     </div>
   );
 }

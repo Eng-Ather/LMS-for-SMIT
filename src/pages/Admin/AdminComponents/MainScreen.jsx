@@ -87,26 +87,30 @@ export default function MainScreen() {
         </div>
         <div className="flex w-full">
           <div className="w-2/5 ">
-          <h2 className="font-bold text-center text-2xl p-2">Courses Completion</h2>
-          <div className="flex flex-col shadow p-2 m-4">
-            <span>a line will show there</span>
-            <span>Web & App</span>
-          </div>
-          <div className="flex flex-col shadow p-2 m-4">
-            <span>a line will show there</span>
-            <span>Web & App</span>
-          </div>
-          <div className="flex flex-col shadow p-2 m-4">
-            <span>a line will show there</span>
-            <span>Web & App</span>
-          </div>
-          <div className="flex flex-col shadow p-2 m-4">
-            <span>a line will show there</span>
-            <span>Web & App</span>
-          </div>
+            <h2 className="font-bold text-center text-2xl p-2">
+              Courses Completion
+            </h2>
+            <div className="flex flex-col shadow p-2 m-4">
+              <span>a line will show there</span>
+              <span>Web & App</span>
+            </div>
+            <div className="flex flex-col shadow p-2 m-4">
+              <span>a line will show there</span>
+              <span>Web & App</span>
+            </div>
+            <div className="flex flex-col shadow p-2 m-4">
+              <span>a line will show there</span>
+              <span>Web & App</span>
+            </div>
+            <div className="flex flex-col shadow p-2 m-4">
+              <span>a line will show there</span>
+              <span>Web & App</span>
+            </div>
           </div>
           <div className="w-3/5 ">
-            <h1 className="text-2xl font-bold text-center p-2">Upcoming Events</h1>
+            <h1 className="text-2xl font-bold text-center p-2">
+              Upcoming Events
+            </h1>
             <div className="flex my-2 shadow bg-gray-200 mx-2 rounded">
               <span className="text-2xl mx-6 my-4">
                 <FaUser />
@@ -149,9 +153,6 @@ export default function MainScreen() {
       {/* side block  */}
       <div className="w-3/12">
         <div className="p-1">
-          
-          
-
           {/* insructors  */}
           <h2 className="text-xl text-center">Best Instructors</h2>
           <div className="flex py-2 my-2 border border-black rounded">
@@ -199,7 +200,6 @@ export default function MainScreen() {
               <p className="text-sm">Data Scientist</p>
             </span>
           </div>
-
 
           <h2 className="text-xl text-center">Notice Board</h2>
           <div className="flex my-2 border border-black rounded">

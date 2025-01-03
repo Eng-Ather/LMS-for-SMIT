@@ -4,17 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-               
-        
-        navbarColor:"#5F9EE0", // navbar k liye color
-       
-        headingColor:"#1E3A8A",
+        navbarColor: "#5F9EE0", // navbar k liye color
+        headingColor: "#1E3A8A",
         subHeadingColor: "#4CAF50",
-        textColor:"#374151"
+        textColor: "#374151",
       },
-      
-     
     },
   },
-  plugins: [],
 };

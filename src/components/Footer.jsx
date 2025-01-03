@@ -95,7 +95,7 @@ function Footer() {
               Chowrangi, Block 2 Gulshan-e-Iqbal, Karachi
             </p>
 
-            <iframe
+            <iframe 
               className="w-full md:w-2/3 h-48 rounded-lg shadow-lg"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.187477858218!2d67.08742367488195!3d24.925682442645446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f60a0781265%3A0x2befaba123014ab1!2sSMIT%20Gulshan%20Campus!5e0!3m2!1sen!2s!4v1734179017287!5m2!1sen!2s"
               allowFullScreen=""
