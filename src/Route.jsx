@@ -15,7 +15,6 @@ import StudentMainScreen from "./pages/Student/StudentComponents/StudentMainScre
 import Assignments from "./pages/Student/StudentComponents/Assignments.jsx";
 import QuizResults from "./pages/Student/StudentComponents/QuizResults.jsx";
 import CourseOutline from "./pages/Student/StudentComponents/CourseOutline.jsx";
-import MaintenanceCharges from "./pages/Student/StudentComponents/MaintenanceCharges.jsx";
 import AttendanceRecords from "./pages/Student/StudentComponents/AttendanceRecords.jsx";
 import TeacherScreens from "./pages/Teacher/TeacherScreens.jsx";
 import TeacherMainScreen from "./pages/Teacher/TeacherComponents/TeacherMainScreen.jsx";
@@ -27,7 +26,7 @@ import TeacherNotifications from "./pages/Teacher/TeacherComponents/TeacherNotif
 export default function Approuter() {
   return (
     <>
-      <BrowserRouter>
+      
         <Routes>
           <Route element={<ScreensWithNavFooter />}>
             <Route index element={<App />} />
@@ -48,10 +47,6 @@ export default function Approuter() {
             <Route path="/quizresults" element={<QuizResults />} />
             <Route path="/attendancerecords" element={<AttendanceRecords />} />
             <Route path="/courseoutline" element={<CourseOutline />} />
-            <Route
-              path="/maintenancecharges"
-              element={<MaintenanceCharges />}
-            />
           </Route>
           <Route element={<TeacherScreens />}>
             <Route path="/teacher" element={<TeacherMainScreen />} />
@@ -63,7 +58,7 @@ export default function Approuter() {
             <Route path="/notifications" element={<TeacherNotifications />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+
     </>
   );
 }

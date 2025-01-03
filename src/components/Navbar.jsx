@@ -7,7 +7,7 @@ import LoginModal from "./LoginModal.jsx"
 function Navbar() {
   return (
 
-    <nav className="p-2 bg-navbarColor border border-subHeadingColor border-b-8 flex justify-between items-center ">
+    <nav className="p-2 bg-navbarColor flex justify-between items-center ">
 
       {/* for Logo/ image */}
       <div className="flex sm:mx-4 md:mx-8 lg:mx-10">
@@ -27,7 +27,7 @@ function Navbar() {
         </span>
         <span className="hidden lg:flex md:flex lg:mx-8 md:mx-2 lg:my-4 md:my-1 ">
           <p className="md:text-md lg:text-2xl text-headingColor pacifico-regular text-shadow-white ">
-            Empowering Innovation Through IT Excellence
+            Empowering Innovation Through I.T Excellence
           </p>
         </span>
       </div>
@@ -52,7 +52,7 @@ function Navbar() {
           About
         </Link> */}
 
-        {/* "About Saylani" external link */}
+        {/* Saylani welfare website link */}
         <Link
           className=" w-28 h-8 lg:w-32 lg:h-10"
           to={"https://www.saylaniwelfare.com/"}

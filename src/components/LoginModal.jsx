@@ -1,8 +1,78 @@
+import Password from "antd/es/input/Password";
+import axios from "axios";
 import React, { useState } from "react";
 import { FaUser} from "react-icons/fa";
 // import { Tooltip as ReactTooltip } from "react-tooltip";
+import { FaUser } from "react-icons/fa";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+import { useNavigate } from "react-router";
+import AppRouts from "../constant/constant.jsx";
+import Cookies from "js-cookie";
+import { useContext } from "react";
+import { AuthContext } from "../context/context.jsx";
 
 function LoginModal() {
+  const [loding, setLoading] = useState();
+  const navigate = useNavigate();
+
+ // Access user and token from AuthContext
+ const { user, setUser, setToken, setSession } = useContext(AuthContext); 
+  // console.log("User:" , user);
+  // console.log("Token:" , token);
+
+  const handellogin = (e) => {        //Function to be invoked on submit button click
+    e.preventDefault();
+
+    if (!e.target.email.value || !e.target.password.value) {
+      alert("Email And Password Both are Required");
+      return;
+    }
+
+    const obj = {
+      email: e.target.email.value,    
+      password: e.target.password.value,
+    };
+    setLoading(true);
+
+    // ******* calling API to get signin
+    axios.post(AppRouts.signin, obj)
+      .then((res) => {
+        const tokenn = res?.data?.user?.token;
+        const currentUser = res?.data?.user?.user;
+        setLoading(false);
+
+        //****** Update sessionStorage & cookies to maintain tab session 
+        Cookies.set("token", tokenn, {expires: 7});
+        sessionStorage.setItem("tokenForSessionStorage",tokenn)
+        
+        //****** Update token, user state in AuthContext to maintain Auth function
+        setSession(tokenn)
+        setToken(tokenn); 
+        setUser(currentUser); 
+
+        // Navigate based on user role
+        switch (currentUser.role) {
+          case "teacher":
+            navigate("/teacher"); // Redirect to teacher page
+            break;
+          case "student":
+            navigate("/student"); // Redirect to student page
+            break;
+          case "admin":
+            navigate("/admin"); // Redirect to admin page
+            break;
+          default:
+            alert("Unknown role, please contact support.");
+            break;
+        }
+      })
+      .catch((error) => {
+        alert("ERROR =>" + error);
+        // console.log(error);
+        setLoading(false);
+      });
+  };
+
   // State to manage modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -24,6 +94,11 @@ function LoginModal() {
           data-tooltip-id="login-tooltip"
         />
         {/* <ReactTooltip id="login-tooltip" place="bottom" content="Click to Login" /> */}
+        <ReactTooltip
+          id="login-tooltip"
+          place="bottom"
+          content="Click to Login"
+        />
       </div>
 
       {/* Modal */}
@@ -34,7 +109,7 @@ function LoginModal() {
               Login to Your Account
             </h4>
             {/* Login Form */}
-            <form>
+            <form onSubmit={handellogin}>
               {/* Email Input */}
               <div className="mb-4">
                 <label
@@ -72,7 +147,7 @@ function LoginModal() {
                 type="submit"
                 className="w-full bg-navbarColor font-serif font-bold text-lg text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
               >
-                Login
+                {loding ? "Loading..." : "Submit"}
               </button>
             </form>
 
