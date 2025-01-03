@@ -105,6 +105,7 @@ export default function Studentscreens() {
   }, [user, navigate]);
 
   return (
+   
     <div className="min-h-screen bg-gray-100 flex flex-col md:flex-row shadow">
       {/********************** Side block (Dropdown for small screens) ****************************/}
       <div className="bg-gray-200 w-full md:w-1/5">
@@ -186,6 +187,7 @@ export default function Studentscreens() {
 
         <Outlet />
       </div>
+    </div>
     </div>
   );
 }

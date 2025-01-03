@@ -100,6 +100,7 @@ function Adminscreens() {
         <Outlet />
       </div>
     </div>
+    </div>
   );
 }
 
