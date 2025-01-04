@@ -3,6 +3,9 @@ import { createContext, useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import AppRouts from "../constant/constant";
+
+
+// Create a context
 export const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
@@ -15,11 +18,11 @@ function AuthContextProvider({ children }) {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      // If session exists, get user info
+      // If session exists, get user info from session
       if (session) {
         await getUserInfo(session);
       }
-      // If token exists but session doesn't, update session and get user info
+      // If token exists but session doesn't, update session and get user info from session
       else if (!session && token) {
         sessionStorage.setItem("tokenForSessionStorage", token); // Update session storage
         setSession(token); // Update session state

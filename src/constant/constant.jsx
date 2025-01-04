@@ -24,5 +24,7 @@ const dev_url = 'http://localhost:5000';
     signin : Base_URL + '/user/login',
     signup : Base_URL + '/user/signup',
     getCurrentUserProfile : Base_URL + '/user/currentUserInfo',
+
+    getCourseOutline : Base_URL + '/course/course-outline/'
 }
 export default AppRouts;
