@@ -171,13 +171,13 @@ export default function StudentMainScreen() {
               </p>
               <p className="text-sm md:text-base text-gray-600">
                 <span className="font-medium">Role:</span> {data.role} of{" "}
-                <b>{data.course}</b>
+                <b>{data.course}</b> {"(" + data.courseId + ")"}
               </p>
               <p className="text-sm md:text-base text-gray-600">
-                <span className="font-medium">Roll Number:</span> {data._id}
+                <span className="font-medium">Roll Number:</span> {data.userId}
               </p>
               <p className="text-sm md:text-base text-gray-600">
-                <span className="font-medium">Batch:</span> {data.batch}, Class
+                <span className="font-medium">Batch:</span> {data.batch[0]}, Class
                 Days: {data.days}
               </p>
             </div>

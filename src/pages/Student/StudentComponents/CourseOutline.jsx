@@ -11,6 +11,8 @@ const CourseOutline = () => {
   const [courseTopics, setCourseTopics] = useState([]);
   const [coveredTopics, setCoveredTopics] = useState([]);
 
+  console.log(user);
+  
   const id = currentUserCourseId?.courseId;
 
   useEffect(() => {
