@@ -1,7 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Outlet, useNavigate, Link } from "react-router-dom";
+
+import React, { useState } from "react";
+import { Outlet, useNavigate } from "react-router";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/context";
 import LogoutButton from "../../components/logout";
+import { Link } from "react-router-dom";
+import StudentDropDown from "./StudentComponents/studentDropDown";
 
 export default function Studentscreens() {
   const navigate = useNavigate();
@@ -16,67 +20,74 @@ export default function Studentscreens() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col md:flex-row shadow">
-      {/* Sidebar */}
+      
+      {/********************** Side block (Dropdown for small screens) ****************************/}
+     
       <div className="bg-gray-200 w-full md:w-1/5">
         <div className="flex md:hidden justify-between items-center bg-gray-300 px-4 py-2">
-          <div className="font-serif text-xl">STUDENT</div>
+         
+          <div className="font-serif text-xl text-headingColor">STUDENT</div>
+         
+          {/* <div className="font-serif text-xl text-headingColor">STUDENT</div> */}
+         
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setIsOpen(!isOpen)}    //to toggel state
             className="text-headingColor focus:outline-none"
           >
             {isOpen ? "Close Menu" : "Open Menu"}
           </button>
         </div>
 
-        <div className={`flex-col ${isOpen ? "block" : "hidden"} md:block`}>
-          <div className="font-serif text-xl md:text-3xl text-center py-6 hidden md:block">
+        <div className={`flex-col ${isOpen ? "block" : "hidden"}  md:block`}
+        >
+          <div className="font-serif text-xl md:text-3xl text-center text-headingColor py-6 hidden md:block">
             STUDENT
           </div>
 
           <div
             onClick={() => navigate("/student")}
-            className="sidebar-item"
+            className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
           >
             Dashboard
           </div>
 
           <div
             onClick={() => navigate("/assignments")}
-            className="sidebar-item"
+            className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
           >
             Assignments
           </div>
 
           <div
             onClick={() => navigate("/courseoutline")}
-            className="sidebar-item"
+            className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
           >
             Course Outline
           </div>
 
-          <div className="sidebar-item">
-            <a
-              href="https://student.saylaniwelfare.com/"
+          <div className=" bg-gray-400 border p-4 my-2 hover:bg-navbarColor hover:border hover:border-headingColor">
+            <Link
+              to="https://student.saylaniwelfare.com/"
               target="_blank"
-              rel="noopener noreferrer"
-              className="font-serif text-md md:text-lg text-headingColor hover:text-white"
+              className="font-serif text-md md:text-lg cursor-pointer  text-headingColor hover:text-white"
             >
               Maintenance Charges
-            </a>
+            </Link>
           </div>
 
-          <div className="sidebar-item">
+          <div
+            onClick={() => navigate("/assignments")}
+            className="font-serif text-md md:text-lg cursor-pointer text-headingColor bg-gray-400 border p-4"
+          >
             <LogoutButton />
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="flex flex-col w-full md:w-4/5 border">
+      {/************************* Center box ******************************/}
+      <div className="flex flex-col flex-end w-full md:w-4/5 border">
         <Outlet />
       </div>
     </div>
   );
 }
-
-
