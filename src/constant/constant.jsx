@@ -23,6 +23,11 @@ const dev_url = 'http://localhost:5000';
  const AppRouts = {
     signin : Base_URL + '/user/login',
     signup : Base_URL + '/user/signup',
+
     getCurrentUserProfile : Base_URL + '/user/currentUserInfo',
+
+    getCourseOutline : Base_URL + '/course/course-outline/',
+
+    getCoveredTopics :Base_URL + '/course/get-cover-topics/'
 }
 export default AppRouts;
