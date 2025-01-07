@@ -84,7 +84,11 @@
 import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
 
-import {NotificationOutlined, UserOutlined, MenuOutlined} from "@ant-design/icons"
+import {
+  NotificationOutlined,
+  UserOutlined,
+  MenuOutlined,
+} from "@ant-design/icons";
 import { Avatar } from "antd";
 
 import { useContext, useEffect } from "react";
@@ -105,52 +109,49 @@ export default function Studentscreens() {
   }, [user, navigate]);
 
   return (
-   
     <div className="min-h-screen bg-gray-100 flex flex-col md:flex-row shadow">
       {/********************** Side block (Dropdown for small screens) ****************************/}
       <div className="bg-gray-200 w-full md:w-1/5">
         <div className="flex md:hidden justify-between items-center bg-gray-300 px-4 py-2">
-         
           <div className="font-serif text-xl text-headingColor">STUDENT</div>
-         
+
           {/* <div className="font-serif text-xl text-headingColor">STUDENT</div> */}
-         
+
           <button
-            onClick={() => setIsOpen(!isOpen)}    //to toggel state
+            onClick={() => setIsOpen(!isOpen)} //to toggel state
             className="text-headingColor focus:outline-none"
           >
             {isOpen ? "Close Menu" : "Open Menu"}
           </button>
         </div>
 
-        <div className={`flex-col ${isOpen ? "block" : "hidden"}  md:block`}
-        >
+        <div className={`flex-col ${isOpen ? "block" : "hidden"}  md:block`}>
           <div className="font-serif text-2xl md:text-4xl text-headingColor py-6 content-center mx-auto hidden md:block">
             STUDENT
           </div>
 
           <div
             onClick={() => navigate("/student")}
-            className="font-serif text-md md:text-lg cursor-pointer hover:text-center text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-subHeadingColor"
+            className="font-serif text-md md:text-lg cursor-pointer hover:text-center text-headingColor bg-gray-400 border rounded p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-subHeadingColor"
           >
             Dashboard
           </div>
 
           <div
             onClick={() => navigate("/assignments")}
-            className="font-serif text-md md:text-lg cursor-pointer hover:text-center text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-subHeadingColor"
+            className="font-serif text-md md:text-lg cursor-pointer hover:text-center text-headingColor bg-gray-400 border rounded p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-subHeadingColor"
           >
             Assignments
           </div>
 
           <div
             onClick={() => navigate("/courseoutline")}
-            className="font-serif text-md md:text-lg cursor-pointer hover:text-center text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-subHeadingColor"
+            className="font-serif text-md md:text-lg cursor-pointer hover:text-center text-headingColor bg-gray-400 border rounded p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-subHeadingColor"
           >
             Course Outline
           </div>
 
-          <div className="hover:text-center bg-gray-400 border p-4 my-2 hover:bg-navbarColor hover:border hover:border-subHeadingColor">
+          <div className="hover:text-center bg-gray-400 border rounded p-4 my-2 hover:bg-navbarColor hover:border hover:border-subHeadingColor">
             <Link
               to="https://student.saylaniwelfare.com/"
               target="_blank"
@@ -162,7 +163,7 @@ export default function Studentscreens() {
 
           <div
             onClick={() => navigate("/assignments")}
-            className="font-serif text-md md:text-lg cursor-pointer text-headingColor bg-gray-400 border p-4"
+            className="font-serif text-md md:text-lg cursor-pointer text-headingColor bg-gray-400 border rounded p-4"
           >
             <LogoutButton />
           </div>
@@ -171,23 +172,8 @@ export default function Studentscreens() {
 
       {/* /center box */}
       <div className="flex flex-col w-4/5 border ">
-        <div className="flex h-20 shadow">
-          <div className="w-10/12 flex h-16 text-4xl items-center justify-center">Welcome Username! </div>
-          <div className="flex items-center justify-end w-2/12"> 
-          <NotificationOutlined
-          className="text-xl mx-3"
-          />
-          <Avatar className="text-xl mx-3" icon={<UserOutlined />} />
-          <MenuOutlined className="text-xl mx-3" />
-          </div>
-        </div>
-
-      {/************************* Center box ******************************/}
-      <div className="flex flex-col flex-end w-full md:w-4/5 border">
-
-        <Outlet />
+          <Outlet />
       </div>
-    </div>
     </div>
   );
 }

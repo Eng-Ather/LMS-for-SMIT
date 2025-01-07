@@ -8,7 +8,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 1 - 101",
       gitLink: "https://github.com/ahmedkhan/assignment1",
       videoLink: "https://youtube.com/watch?v=example1",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 2,
@@ -16,7 +16,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 1 - 102",
       gitLink: "https://github.com/ayeshmalik/assignment1",
       videoLink: "https://youtube.com/watch?v=example2",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 3,
@@ -24,7 +24,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 2 - 201",
       gitLink: "https://github.com/aliraza/assignment1",
       videoLink: "https://youtube.com/watch?v=example3",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 4,
@@ -32,7 +32,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 2 - 202",
       gitLink: "https://github.com/fatimanoor/assignment1",
       videoLink: "https://youtube.com/watch?v=example4",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 5,
@@ -40,7 +40,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 3 - 301",
       gitLink: "https://github.com/zainahmed/assignment1",
       videoLink: "https://youtube.com/watch?v=example5",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 6,
@@ -48,7 +48,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 3 - 302",
       gitLink: "https://github.com/sarakhan/assignment1",
       videoLink: "https://youtube.com/watch?v=example6",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 7,
@@ -56,7 +56,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 1 - 101",
       gitLink: "https://github.com/ahmedkhan/assignment1",
       videoLink: "https://youtube.com/watch?v=example1",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 8,
@@ -64,7 +64,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 1 - 102",
       gitLink: "https://github.com/ayeshmalik/assignment1",
       videoLink: "https://youtube.com/watch?v=example2",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 9,
@@ -72,7 +72,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 2 - 201",
       gitLink: "https://github.com/aliraza/assignment1",
       videoLink: "https://youtube.com/watch?v=example3",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 10,
@@ -80,7 +80,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 2 - 202",
       gitLink: "https://github.com/fatimanoor/assignment1",
       videoLink: "https://youtube.com/watch?v=example4",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 11,
@@ -88,7 +88,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 3 - 301",
       gitLink: "https://github.com/zainahmed/assignment1",
       videoLink: "https://youtube.com/watch?v=example5",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
     {
       serialNumber: 12,
@@ -96,7 +96,7 @@ export default function StudentsAssignments() {
       rollNo: "Batch 3 - 302",
       gitLink: "https://github.com/sarakhan/assignment1",
       videoLink: "https://youtube.com/watch?v=example6",
-      assignmentDetail : "Create landing page like agoda.com"
+      assignmentDetail: "Create landing page like agoda.com",
     },
   ];
 
@@ -120,7 +120,7 @@ export default function StudentsAssignments() {
             <th scope="col" className="px-6 py-3">
               Video Link(optional)
             </th>
-            
+
             <th scope="col" className="px-6 py-3">
               Assignment Detail
             </th>
@@ -131,33 +131,32 @@ export default function StudentsAssignments() {
         </thead>
         <tbody>
           {studentAssignments.map((data) => (
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th
-              scope="row"
-              className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              {data.serialNumber}.
-            </th>
-            <th
-              scope="row"
-              className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              {data.studentName}
-            </th>
-            <td className="px-6 py-4">{data.rollNo}</td>
-            <td className="px-6 py-4">{data.gitLink}</td>
-            <td className="px-6 py-4">{data.videoLink}</td>
-            <td className="px-6 py-4">{data.assignmentDetail}</td>
-            <td className="flex items-center px-6 py-4">
-              <a
-                href="#"
-                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Check
-              </a>
-            </td>
-          </tr>
-
+                {data.serialNumber}.
+              </th>
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {data.studentName}
+              </th>
+              <td className="px-6 py-4">{data.rollNo}</td>
+              <td className="px-6 py-4">{data.gitLink}</td>
+              <td className="px-6 py-4">{data.videoLink}</td>
+              <td className="px-6 py-4">{data.assignmentDetail}</td>
+              <td className="flex items-center px-6 py-4">
+                <a
+                  href="#"
+                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  Check
+                </a>
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>

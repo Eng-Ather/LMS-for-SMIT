@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { FaUser} from "react-icons/fa";
 // import { Tooltip as ReactTooltip } from "react-tooltip";
-import { FaUser } from "react-icons/fa";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useNavigate } from "react-router";
 import AppRouts from "../constant/constant.jsx";
