@@ -139,8 +139,12 @@ export default function TeacherMainScreen() {
               Edit
             </button>
           </div>
-          <button className="font-bold bg-green-400 rounded-full justify-center m-4">Create New Assignment</button>
-          <button className="font-bold bg-green-400 rounded-full justify-center m-4">Delete an Assignment</button>
+          <button className="font-bold bg-green-400 rounded-full justify-center m-4">
+            Create New Assignment
+          </button>
+          <button className="font-bold bg-green-400 rounded-full justify-center m-4">
+            Delete an Assignment
+          </button>
         </div>
       </div>
     </div>
