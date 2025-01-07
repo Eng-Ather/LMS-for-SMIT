@@ -1,7 +1,8 @@
 import Password from "antd/es/input/Password";
 import axios from "axios";
 import React, { useState } from "react";
-import { FaUser } from "react-icons/fa";
+import { FaUser} from "react-icons/fa";
+// import { Tooltip as ReactTooltip } from "react-tooltip";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useNavigate } from "react-router";
 import AppRouts from "../constant/constant.jsx";
@@ -91,6 +92,7 @@ function LoginModal() {
           aria-label="Login"
           data-tooltip-id="login-tooltip"
         />
+        {/* <ReactTooltip id="login-tooltip" place="bottom" content="Click to Login" /> */}
         <ReactTooltip
           id="login-tooltip"
           place="bottom"

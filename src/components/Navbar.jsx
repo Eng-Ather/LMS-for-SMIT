@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../images/logo.png";
 import saylani from "../images/saylani.png";
-import LoginModal from "./LoginModal";
-import { Tooltip as ReactTooltip } from "react-tooltip";
+import LoginModal from "./LoginModal.jsx"
+// import { Tooltip as ReactTooltip } from "react-tooltip";
 
 function Navbar() {
   return (
@@ -22,7 +22,7 @@ function Navbar() {
             className="w-10 h-10 lg:w-16 lg:h-16 rounded-full"
             data-tooltip-id="logo-tooltip"
           />
-          <ReactTooltip id="logo-tooltip" place="bottom" content="Home"/>
+          {/* <ReactTooltip id="logo-tooltip" place="bottom" content="Home"/> */}
           </Link>
         </span>
         <span className="hidden lg:flex md:flex lg:mx-8 md:mx-2 lg:my-4 md:my-1 ">
@@ -63,7 +63,7 @@ function Navbar() {
             alt="MS"
             data-tooltip-id="saylani-tooltip"
           />
-          <ReactTooltip id="saylani-tooltip" place="bottom" content="About Saylani"/>
+          {/* <ReactTooltip id="saylani-tooltip" place="bottom" content="About Saylani"/> */}
         </Link>
       </div>
     </nav>
