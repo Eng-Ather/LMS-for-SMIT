@@ -1,151 +1,228 @@
 import React from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../context/context";
 
 export default function TeacherMainScreen() {
-  const batches = [
-    {
-      batchName: "Batch 11",
-      timeSlot: "10:00 AM - 12:00 PM",
-      campusName: "Gulshan",
-      classroomName: "Audi I",
-    },
-    {
-      batchName: "Batch 12",
-      timeSlot: "12:30 PM - 2:30 PM",
-      campusName: "Bahadurabad",
-      classroomName: "Audi II",
-    },
-    {
-      batchName: "Batch 13",
-      timeSlot: "3:00 PM - 5:00 PM",
-      campusName: "Ali Muhammad",
-      classroomName: "Room A1",
-    },
-    {
-      batchName: "Batch 14",
-      timeSlot: "5:30 PM - 7:30 PM",
-      campusName: "Gulshan",
-      classroomName: "Room B2",
-    },
-    {
-      batchName: "Batch 15",
-      timeSlot: "8:00 AM - 10:00 AM",
-      campusName: "Bahadurabad",
-      classroomName: "Audi III",
-    },
-    {
-      batchName: "Batch 16",
-      timeSlot: "6:00 PM - 8:00 PM",
-      campusName: "Ali Muhammad",
-      classroomName: "Room C3",
-    },
-  ];
+  const [loding, setLoading] = useState();
+
+  const { user } = useContext(AuthContext);
+  const data = user;
+  
+  // function to update covered topics in data base
+  const updateCourseOutline = (e) => {
+    e.preventDefault();
+    const batch = e.target.elements.Batch.value;
+    const courseId = e.target.elements.courseId.value;
+    const days = e.target.elements.days.value;
+    const sectionId = e.target.elements.sectionId.value;
+    const coveredTopic = e.target.elements.coveredTopic.value;
+
+    // getting userID (Teacher ID)
+    const teacherId = data.userId;
+
+    // console.log({ batch, courseId, days, sectionId, coveredTopic });
+    console.log({ batch, courseId, days, sectionId, coveredTopic, teacherId });
+  };
 
   return (
-    <div className="h-screen overflow-y-scroll">
-      <div className="grid grid-cols-3 gap-4 p-8">
-        {batches.map((data) => (
-          <div className="max-w-sm p-4 gap-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-              <h5 className="text-2xl font-bold  text-gray-900 text-center">
-                {data.batchName}
-              </h5>
-            </a>
-            <p className="text-xs text-gray-700 text-center">{data.timeSlot}</p>
-            <p className="mt-3 font-bold text-gray-700">
-              Location : {data.campusName}
-            </p>
-            <p className="mb-3 text-xs font-bold text-gray-900">
-              {data.classroomName}
-            </p>
+    <div className="h-screen overflow-y-scroll bg-gray-100 p-4 ">
+      {/* teacher profile card */}
+      {data ? (
+        // if user data is avilable
+        <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
+          <div className="border bg-blue-50 border-blue-300 rounded-lg p-4 md:p-6">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+              <img
+                src="https://via.placeholder.com/100"
+                alt="Student"
+                className="w-28 h-28 rounded-full border-4 border-navbarColor shadow-lg transform hover:scale-110 transition-transform duration-300"
+              />
+              <div className="flex-1 text-center md:text-left">
+                <h2 className="text-lg md:text-2xl font-serif uppercase text-headingColor">
+                  {data.name || "Name not available"}
+                </h2>
 
-            <div className="w-full h-2 m-2 bg-gray-200 rounded-full dark:bg-gray-700">
-              <div
-                className="h-2 bg-blue-600 rounded-full dark:bg-blue-500"
-                style={{ width: "50%" }}
+                <p className="text-sm md:text-base text-textColor">
+                  Teacher ID: {data.userId || "N/A"}
+                </p>
+
+                <p className="text-sm md:text-base text-textColor">
+                  Email: {data.email || "Email not available"}
+                </p>
+
+                <p className="text-sm md:text-base text-textColor">
+                  <span className="font-medium">Courses: </span>
+                  {data.course && data.course.length > 0 ? (
+                    data.course.map((course, index) => (
+                      <span key={index}>
+                        <b> {course} </b> ({data.courseId[index] || "No ID"}){" "}
+                        {" , "}
+                      </span>
+                    ))
+                  ) : (
+                    <span> No courses available</span>
+                  )}
+                </p>
+
+                <p className="text-sm md:text-base text-textColor">
+                  <span className="font-medium">Assign Batch & Section </span>
+                  {data.course && data.course.length > 0 ? (
+                    data.course.map((course, index) => (
+                      <span key={index}>
+                        <b> {course} </b>({data.batch[index] || "No batch"}){" "}
+                        {" , "}({data.sectionId[index] || "No section"}){" , "}(
+                        {data.days[index] || "-x-x-x-x-"})<br />
+                      </span>
+                    ))
+                  ) : (
+                    <span> No courses available</span>
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        // if user data is not avilable
+        <p>empty</p>
+      )}
+
+      {/* new assigment */}
+      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
+        <div className="border bg-blue-50 border-blue-300 rounded-lg p-4 md:p-6">
+          <h3 className="text-lg md:text-2xl font-serif text-headingColor mb-4 border-b pb-2 border-blue-500">
+            Update Course Outline
+          </h3>
+
+          {/* form */}
+          <form onSubmit={updateCourseOutline}>
+            <div className="flex flex-col md:flex-row justify-around">
+{/* 1st row */}
+              {/* Batch Input ------------- */}
+              <div className="mb-4 w-full md:w-1/4">
+                <label htmlFor="batchDropdown"> Batch </label>
+                <select
+                  name="Batch"
+                  className="w-full border border-blue-300 rounded-lg p-2"
+                >
+                  {data && data.batch && data.batch.length > 0 ? (
+                    <>
+                      <option value="" disabled selected>
+                        Select Batch
+                      </option>
+                      {data.batch.map((batch, index) => (
+                        <option key={index} value={batch}>
+                          {batch}
+                        </option>
+                      ))}
+                    </>
+                  ) : (
+                    <option value="">No Batches Available</option>
+                  )}
+                </select>
+              </div>
+
+              {/* course ID Input */}
+              <div className="mb-4 w-full md:w-1/4">
+                <label htmlFor="courseIdDropdown"> Course ID </label>
+                <select
+                  name="courseId"
+                  className="w-full border border-blue-300 rounded-lg p-2"
+                >
+                  {data && data.courseId && data.courseId.length > 0 ? (
+                    <>
+                      <option value="" disabled selected>
+                        Select Course ID
+                      </option>
+                      {data.courseId.map((courseID, index) => (
+                        <option key={index} value={courseID}>
+                          {courseID}
+                        </option>
+                      ))}
+                    </>
+                  ) : (
+                    <option value="">No Course Available</option>
+                  )}
+                </select>
+              </div>
+            </div>
+
+{/* 2nd row  */}
+            <div className="flex flex-col md:flex-row justify-around">
+             
+              {/* days Input */}
+              <div className="mb-4 w-full md:w-1/4">
+                <label htmlFor="daysDropdown"> Days </label>
+                <select
+                  name="days"
+                  className="w-full border border-blue-300 rounded-lg p-2"
+                >
+                  {data && data.days && data.days.length > 0 ? (
+                    <>
+                      <option value="" disabled selected>
+                        Select Batch
+                      </option>
+                      {data.days.map((days, index) => (
+                        <option key={index} value={days}>
+                          {days}
+                        </option>
+                      ))}
+                    </>
+                  ) : (
+                    <option value="">No Time Slot Available</option>
+                  )}
+                </select>
+              </div>
+
+              {/* section ID Input */}
+              <div className="mb-4 w-full md:w-1/4">
+                <label htmlFor="sectionIdDropdown"> Section ID </label>
+                <select
+                  name="sectionId"
+                  className="w-full border border-blue-300 rounded-lg p-2"
+                >
+                  {data && data.sectionId && data.sectionId.length > 0 ? (
+                    <>
+                      <option value="" disabled selected>
+                        Select Section Id
+                      </option>
+                      {data.sectionId.map((sectionId, index) => (
+                        <option key={index} value={sectionId}>
+                          {sectionId}
+                        </option>
+                      ))}
+                    </>
+                  ) : (
+                    <option value="">No Batches Available</option>
+                  )}
+                </select>
+              </div>
+
+            </div>
+
+            {/* covered topics Input */}
+            <div className="mb-4">
+              <label htmlFor="coveredTopic"> Covered Topics </label>
+              <input
+                type="text"
+                name="coveredTopic"
+                placeholder="Content Covered"
+                className="w-full border border-gray-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
-            <button
-              href="#"
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg"
-            >
-              View
-            </button>
-          </div>
-        ))}
-      </div>
-      <div className="flex">
-        <div className=" p-8 w-7/12">
-          <h2 className="flex font-bold text-2xl justify-center items-center">
-            Courses Progress
-          </h2>
 
-          <div className="mb-1 text-lg font-medium dark:text-white">
-            Web & Mobile App Development(Batch-11)
-          </div>
-          <div className="w-full h-4 mb-4 bg-gray-200 rounded-full dark:bg-gray-700">
-            <div
-              className="h-4 bg-blue-600 rounded-full dark:bg-blue-500"
-              style={{ width: "95%" }}
-            />
-          </div>
-          <div className="mb-1 text-lg font-medium dark:text-white">
-            Web & Mobile App Development(Batch-12)
-          </div>
-          <div className="w-full h-4 mb-4 bg-gray-200 rounded-full dark:bg-gray-700">
-            <div
-              className="h-4 bg-blue-600 rounded-full dark:bg-blue-500"
-              style={{ width: "60%" }}
-            />
-          </div>
-          <div className="mb-1 text-lg font-medium dark:text-white">
-            Web & Mobile App Development(Batch-13)
-          </div>
-          <div className="w-full h-4 mb-4 bg-gray-200 rounded-full dark:bg-gray-700">
-            <div
-              className="h-4 bg-blue-600 rounded-full dark:bg-blue-500"
-              style={{ width: "25%" }}
-            />
-          </div>
-          <div className="mb-1 text-lg font-medium dark:text-white">
-            Web & Mobile App Development(Batch-14)
-          </div>
-          <div className="w-full h-4 mb-4 bg-gray-200 rounded-full dark:bg-gray-700">
-            <div
-              className="h-4 bg-blue-600 rounded-full dark:bg-blue-500"
-              style={{ width: "10%" }}
-            />
-          </div>
-          <div className="flex shadow justify-center border p-1 cursor-pointer">
-            View All
-          </div>
-        </div>
-        <div className="w-5/12 justify-center p-2">
-          <h2 className="text-center text-2xl font-bold">Assignments</h2>
-          <div className="container mx-auto w-full p-4 bg-white border border-gray-200 rounded-lg shadow">
-            <a href="#">
-              <h5 className="text-lg font-bold  text-gray-900">
-                Last Assigned
-              </h5>
-            </a>
-            <p className="mt-3 font-bold text-gray-700">batchName</p>
-            <p className="mb-3 text-xs font-bold text-gray-900">
-              Assignmet like Create a landing page like booking.com
-            </p>
-
+            {/* Submit Button */}
             <button
-              href="#"
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg"
+              type="submit"
+              className="w-full bg-blue-500 font-serif font-bold text-lg text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
             >
-              Edit
+              {loding ? "Loading..." : "Submit"}
             </button>
-          </div>
-          <button className="font-bold bg-green-400 rounded-full justify-center m-4">
-            Create New Assignment
-          </button>
-          <button className="font-bold bg-green-400 rounded-full justify-center m-4">
-            Delete an Assignment
-          </button>
+
+          </form>
+
         </div>
+
       </div>
     </div>
   );

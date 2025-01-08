@@ -20,12 +20,9 @@ export default function TeacherScreens() {
   }, [user, navigate]);
 
   return (
-    <div className="h-screen bg-gray-100 flex shadow">
-      {/* Side block */}
-      <div className="min-h-screen bg-gray-100 flex shadow h-screen">
+    <div className=" h-screen bg-gray-100 flex shadow">
         {/********************     Side block    ***************************/}
         <div className="bg-gray-200 flex flex-start flex-col w-1/5">
-          {/* Side block Heading */}
 
           {/* side block heading */}
           <div className="font-serif text-headingColor h-16 content-center mx-auto text-2xl ">
@@ -69,10 +66,9 @@ export default function TeacherScreens() {
         </div>
 
         {/*********************   /center box   **************************/}
-        <div className="flex flex-col w-4/5 border">
+        <div className="flex flex-col flex-end w-full md:w-4/5 border">
           <Outlet />
         </div>
-      </div>
     </div>
   );
 }
