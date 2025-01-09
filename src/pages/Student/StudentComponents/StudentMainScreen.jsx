@@ -1,4 +1,3 @@
-
 import React, { useContext } from "react";
 import { AuthContext } from "../../../context/context";
 
@@ -16,6 +15,7 @@ export default function StudentMainScreen() {
 
   return (
     <div className="min-h-screen overflow-y-scroll bg-gray-100 p-4 md:p-6">
+
       {/* student profile card */}
       <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
         <div className=" border bg-blue-50 border-blue-300 rounded-lg p-4 md:p-6 ">
@@ -40,8 +40,8 @@ export default function StudentMainScreen() {
                 <span className="font-medium">Roll Number:</span> {data.userId}
               </p>
               <p className="text-sm md:text-base text-gray-600">
-                <span className="font-medium">Batch:</span> {data.batch[0]}, Class
-                Days: {data.days}
+                <span className="font-medium">Batch:</span> {data.batch[0]},
+                Class Days: {data.days}
               </p>
             </div>
           </div>

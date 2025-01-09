@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/context";
+import { MenuFoldOutlined, CloseOutlined } from "@ant-design/icons";
 import { FaBars, FaTimes } from "react-icons/fa";
 import LogoutButton from "../../components/logout";
 import { Link } from "react-router-dom";
@@ -28,6 +29,7 @@ export default function Studentscreens() {
             onClick={() => setIsOpen(!isOpen)} //to toggel state
             className="text-headingColor focus:outline-none"
           >
+            {isOpen ? <CloseOutlined /> : <MenuFoldOutlined />}
             {isOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
