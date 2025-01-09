@@ -1,11 +1,10 @@
-
 import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/context";
+import { MenuFoldOutlined, CloseOutlined } from "@ant-design/icons";
 import LogoutButton from "../../components/logout";
 import { Link } from "react-router-dom";
-import StudentDropDown from "./StudentComponents/studentDropDown";
 
 export default function Studentscreens() {
   const navigate = useNavigate();
@@ -20,26 +19,20 @@ export default function Studentscreens() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col md:flex-row shadow">
-      
       {/********************** Side block (Dropdown for small screens) ****************************/}
-     
+
       <div className="bg-gray-200 w-full md:w-1/5">
         <div className="flex md:hidden justify-between items-center bg-gray-300 px-4 py-2">
-         
           <div className="font-serif text-xl text-headingColor">STUDENT</div>
-         
-          {/* <div className="font-serif text-xl text-headingColor">STUDENT</div> */}
-         
           <button
-            onClick={() => setIsOpen(!isOpen)}    //to toggel state
+            onClick={() => setIsOpen(!isOpen)} //to toggel state
             className="text-headingColor focus:outline-none"
           >
-            {isOpen ? "Close Menu" : "Open Menu"}
+            {isOpen ? <CloseOutlined /> : <MenuFoldOutlined />}
           </button>
         </div>
 
-        <div className={`flex-col ${isOpen ? "block" : "hidden"}  md:block`}
-        >
+        <div className={`flex-col ${isOpen ? "block" : "hidden"}  md:block`}>
           <div className="font-serif text-xl md:text-3xl text-center text-headingColor py-6 hidden md:block">
             STUDENT
           </div>

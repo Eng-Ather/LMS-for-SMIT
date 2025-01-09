@@ -1,16 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router";
-import {
-  NotificationOutlined,
-  UserOutlined,
-  MenuOutlined,
-} from "@ant-design/icons";
-import { Avatar } from "antd";
+import { MenuFoldOutlined, CloseOutlined } from "@ant-design/icons";
 import LogoutButton from "../../components/logout";
 import { AuthContext } from "../../context/context";
 
 export default function TeacherScreens() {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   const { user } = useContext(AuthContext);
   useEffect(() => {
@@ -20,59 +16,67 @@ export default function TeacherScreens() {
   }, [user, navigate]);
 
   return (
-    <div className="h-screen bg-gray-100 flex shadow">
-      {/* Side block */}
-      <div className="min-h-screen bg-gray-100 flex shadow h-screen">
+    <>
+      <div className="h-screen bg-gray-100 flex flex-col md:flex-row shadow">
         {/********************     Side block    ***************************/}
-        <div className="bg-gray-200 flex flex-start flex-col w-1/5">
-          {/* Side block Heading */}
-
-          {/* side block heading */}
-          <div className="font-serif text-headingColor h-16 content-center mx-auto text-2xl ">
-            TEACHER
+        <div className="bg-gray-200 w-full md:w-1/5">
+          <div className="flex md:hidden justify-between items-center bg-gray-300 px-4 py-2">
+            <div className="font-serif text-xl text-headingColor">TEACHER</div>
+            <button
+              onClick={() => setIsOpen(!isOpen)} //to toggel state
+              className="text-headingColor focus:outline-none"
+            >
+              {isOpen ? <CloseOutlined /> : <MenuFoldOutlined />}
+            </button>
           </div>
 
-          {/* side block options */}
+          <div className={`flex-col ${isOpen ? "block" : "hidden"}  md:block`}>
+            <div className="font-serif text-xl md:text-3xl text-center text-headingColor py-6 hidden md:block">
+              TEACHER
+            </div>
 
-          <div
-            onClick={() => navigate("/teacher")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4  "
-          >
-            Dashboard
-          </div>
+            <div
+              onClick={() => navigate("/teacher")}
+              className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
+            >
+              Dashboard
+            </div>
 
-          <div
-            onClick={() => navigate("/aboutcourse")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4  "
-          >
-            About Courses
-          </div>
-          <div
-            onClick={() => navigate("/studentsassignments")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4"
-          >
-            Students Assignments
-          </div>
-          <div
-            onClick={() => navigate("/notifications")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4  "
-          >
-            Notifications
-          </div>
+            <div
+              onClick={() => navigate("/aboutcourse")}
+              className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
+            >
+              About Course
+            </div>
 
-          <div
-            onClick={() => navigate("/studentsassignments")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4"
-          >
-            <LogoutButton />
+            <div
+              onClick={() => navigate("/studentsassignments")}
+              className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
+            >
+              Students Assignments
+            </div>
+
+            <div
+              onClick={() => navigate("/notifications")}
+              className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
+            >
+              Notifications
+            </div>
+
+            <div
+              onClick={() => navigate("/assignments")}
+              className="font-serif text-md md:text-lg cursor-pointer text-headingColor bg-gray-400 border p-4"
+            >
+              <LogoutButton />
+            </div>
           </div>
         </div>
 
         {/*********************   /center box   **************************/}
-        <div className="flex flex-col w-4/5 border">
+        <div className="flex flex-col w-full md:w-4/5 border">
           <Outlet />
         </div>
       </div>
-    </div>
+    </>
   );
 }
