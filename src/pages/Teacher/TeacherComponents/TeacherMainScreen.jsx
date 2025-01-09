@@ -67,6 +67,7 @@ export default function TeacherMainScreen() {
       !e.target.elements.days.value ||
       !e.target.elements.sectionId.value ||
       !e.target.elements.newAssignment.value ||
+      !e.target.elements.assignmentId.value ||
       !teacherID
     ) {
       alert("submit complete data");
@@ -80,10 +81,10 @@ export default function TeacherMainScreen() {
       days: e.target.elements.days.value,
       sectionId: e.target.elements.sectionId.value,
       assignment: e.target.elements.newAssignment.value,
+      assignmentId : e.target.elements.assignmentId.value
     };
     // setLoading(true);
     console.log(newAssignment);
-
   };
 
   return (
@@ -393,15 +394,28 @@ export default function TeacherMainScreen() {
               </div>
             </div>
 
-            {/* Assignment Input */}
-            <div className="mb-4">
-              <label htmlFor="newAssignment"> Assignment </label>
-              <input
-                type="text"
-                name="newAssignment"
-                placeholder="Create Assignment"
-                className="w-full border border-gray-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+            <div className="flex flex-col md:flex-row justify-around">
+              {/* Assignment ID */}
+              <div className="mb-4 w-full  md:w-1/4 ">
+                <label htmlFor="assignmentID">Assignment ID</label>
+                <input
+                  type="text"
+                  name="assignmentId"
+                  placeholder="Enter Assignment ID"
+                  className="w-full border border-blue-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              {/* Assignment Input */}
+              <div className="mb-4 w-full md:w-1/4">
+                <label htmlFor="newAssignment">Assignment</label>
+                <textarea
+                  rows={2}
+                  name="newAssignment"
+                  placeholder="Create Assignment"
+                  className="w-full  border border-blue-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
             </div>
 
             {/* Submit Button */}
