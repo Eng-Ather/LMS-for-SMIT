@@ -1,6 +1,6 @@
 import React from "react";
-import { IoSearchSharp } from "react-icons/io5";
 import logo from "../../../images/logo.png";
+import addTeacherModal from "../../../components/addTeacherModal.jsx";
 
 export default function Instructors() {
   const instructors = [
@@ -80,21 +80,10 @@ export default function Instructors() {
     <div className="h-screen overflow-y-scroll p-10">
       <h1 className="text-center p-4">Known for Indutry's Best Instructors</h1>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <div className="flex items-center justify-center flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
-          <label htmlFor="table-search" className="sr-only">
-            Search
-          </label>
-          <div className="relative">
-            <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-              <IoSearchSharp />
-            </div>
-            <input
-              type="text"
-              id="table-search-users"
-              className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search for users"
-            />
-          </div>
+        <div className="flex items-center  border border-black justify-end flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+          <button className="bg-blue-500 font-serif font-bold text-base text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+            <addTeacherModal />
+          </button>
         </div>
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

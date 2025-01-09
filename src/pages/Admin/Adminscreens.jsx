@@ -1,15 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
-import {
-  NotificationOutlined,
-  UserOutlined,
-  MenuOutlined,
-} from "@ant-design/icons";
-import { Avatar } from "antd";
 import { useEffect } from "react";
 import LogoutButton from "../../components/logout";
 import RoleBasedNavigation from "../../components/RoleBasedNavigation";
 import { useContext } from "react";
+import { MenuFoldOutlined, CloseOutlined } from "@ant-design/icons";
 import { AuthContext } from "../../context/context.jsx";
 
 function Adminscreens() {
@@ -17,6 +12,7 @@ function Adminscreens() {
 
   // Access user and token from AuthContext
   const { user } = useContext(AuthContext);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -25,64 +21,70 @@ function Adminscreens() {
   }, [user, navigate]);
 
   return (
-    <div className="h-screen bg-gray-100 flex shadow">
-      {/* Left Side block */}
-      <div className="h-screen bg-gray-100 flex shadow ">
-        {/**************************     Left Side block    ************************/}
+    <div className="h-screen bg-gray-100 flex flex-col md:flex-row shadow">
+      {/********************     Side block    ***************************/}
+      <div className="bg-gray-200 w-full md:w-1/5">
+        <div className="flex md:hidden justify-between items-center bg-gray-300 px-4 py-2">
+          <div className="font-serif text-xl text-headingColor">ADMIN</div>
+          <button
+            onClick={() => setIsOpen(!isOpen)} //to toggel state
+            className="text-headingColor focus:outline-none"
+          >
+            {isOpen ? <CloseOutlined /> : <MenuFoldOutlined />}
+          </button>
+        </div>
 
-        <div className="bg-gray-200 flex flex-start flex-col w-1/5">
-          {/* side block heading */}
-          <div className="font-serif text-headingColor h-16 content-center mx-auto text-2xl ">
+        <div className={`flex-col ${isOpen ? "block" : "hidden"}  md:block`}>
+          <div className="font-serif text-xl md:text-3xl text-center text-headingColor py-6 hidden md:block">
             ADMIN
           </div>
 
-          {/* side block option  */}
           <div
             onClick={() => navigate("/admin")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4  "
+            className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
           >
             Dashboard
           </div>
 
           <div
-            onClick={() => navigate("/addstudent")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4  "
+            onClick={() => navigate("/addcourse")}
+            className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
           >
             Students
           </div>
 
           <div
-            onClick={() => navigate("/addcourse")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4  "
+            onClick={() => navigate("/addstudent")}
+            className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
           >
-            Courses
+            Course
           </div>
 
           <div
             onClick={() => navigate("/newannouncement")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4  "
+            className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
           >
             Announcements
           </div>
           <div
             onClick={() => navigate("/instructors")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4  "
+            className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
           >
             Instructors
           </div>
 
           <div
-            onClick={() => navigate("/newannouncement")}
-            className="font-serif font-semibold cursor-pointer text-headingColor bg-gray-400 border rounded p-4  "
+            onClick={() => navigate("/assignments")}
+            className="font-serif text-md md:text-lg cursor-pointer text-headingColor bg-gray-400 border p-4"
           >
             <LogoutButton />
           </div>
         </div>
+      </div>
 
-        {/*************************   center box    ********************************/}
-        <div className="flex flex-col w-4/5 border ">
-          <Outlet />
-        </div>
+      {/*********************   /center box   **************************/}
+      <div className="flex flex-col w-full md:w-4/5 border">
+        <Outlet />
       </div>
     </div>
   );

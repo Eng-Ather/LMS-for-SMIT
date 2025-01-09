@@ -1,7 +1,7 @@
 import Password from "antd/es/input/Password";
 import axios from "axios";
 import React, { useState } from "react";
-import { FaUser} from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 // import { Tooltip as ReactTooltip } from "react-tooltip";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useNavigate } from "react-router";
@@ -14,12 +14,13 @@ function LoginModal() {
   const [loding, setLoading] = useState();
   const navigate = useNavigate();
 
- // Access user and token from AuthContext
- const { user, setUser, setToken, setSession } = useContext(AuthContext); 
+  // Access user and token from AuthContext
+  const { user, setUser, setToken, setSession } = useContext(AuthContext);
   // console.log("User:" , user);
   // console.log("Token:" , token);
 
-  const handellogin = (e) => {        //Function to be invoked on submit button click
+  const handellogin = (e) => {
+    //Function to be invoked on submit button click
     e.preventDefault();
 
     if (!e.target.email.value || !e.target.password.value) {
@@ -28,26 +29,27 @@ function LoginModal() {
     }
 
     const obj = {
-      email: e.target.email.value,    
+      email: e.target.email.value,
       password: e.target.password.value,
     };
     setLoading(true);
 
     // ******* calling API to get signin
-    axios.post(AppRouts.signin, obj)
+    axios
+      .post(AppRouts.signin, obj)
       .then((res) => {
         const tokenn = res?.data?.user?.token;
         const currentUser = res?.data?.user?.user;
         setLoading(false);
 
-        //****** Update sessionStorage & cookies to maintain tab session 
-        Cookies.set("token", tokenn, {expires: 7});
-        sessionStorage.setItem("tokenForSessionStorage",tokenn)
-        
+        //****** Update sessionStorage & cookies to maintain tab session
+        Cookies.set("token", tokenn, { expires: 7 });
+        sessionStorage.setItem("tokenForSessionStorage", tokenn);
+
         //****** Update token, user state in AuthContext to maintain Auth function
-        setSession(tokenn)
-        setToken(tokenn); 
-        setUser(currentUser); 
+        setSession(tokenn);
+        setToken(tokenn);
+        setUser(currentUser);
 
         // Navigate based on user role
         switch (currentUser.role) {
