@@ -1,28 +1,57 @@
 import React from "react";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../context/context";
+import AppRouts from "../../../constant/constant";
+import axios from "axios";
 
 export default function TeacherMainScreen() {
   const [loding, setLoading] = useState();
 
   const { user } = useContext(AuthContext);
   const data = user;
-  
+
   // function to update covered topics in data base
   const updateCourseOutline = (e) => {
     e.preventDefault();
-    const batch = e.target.elements.Batch.value;
-    const courseId = e.target.elements.courseId.value;
-    const days = e.target.elements.days.value;
-    const sectionId = e.target.elements.sectionId.value;
-    const coveredTopic = e.target.elements.coveredTopic.value;
 
-    // getting userID (Teacher ID)
-    const teacherId = data.userId;
+     // getting userID (Teacher ID)
+     const teacherID = data.userId;
 
-    // console.log({ batch, courseId, days, sectionId, coveredTopic });
-    console.log({ batch, courseId, days, sectionId, coveredTopic, teacherId });
-  };
+    if (
+      !e.target.elements.Batch.value ||
+      !e.target.elements.courseId.value ||
+      !e.target.elements.days.value ||
+      !e.target.elements.sectionId.value ||
+      !e.target.elements.coveredTopic.value ||
+      !teacherID
+    ) {
+      alert("submit complete data");
+      return;
+    }
+
+    const updateTopisc = {
+      teacherId : teacherID,
+      batch: e.target.elements.Batch.value,
+      courseId: e.target.elements.courseId.value,
+      days: e.target.elements.days.value,
+      sectionId: e.target.elements.sectionId.value,
+      coveredTopic: e.target.elements.coveredTopic.value,
+    };
+    setLoading(true);
+    console.log(e.target.elements.days.value);
+    
+    axios.post (AppRouts.updateCourseOutline, updateTopisc) //calling API to update course outline
+    .then((res) => {
+      console.log(res);
+      setLoading(false)
+      alert("Updating Course Outline Successfully");
+    })
+    .catch((error) => {
+      setLoading(false);
+      console.error("Error while updating Course Outline:", error.message);
+      alert("Error while updating Course Outline: " + error.message);
+    });
+  }
 
   return (
     <div className="h-screen overflow-y-scroll bg-gray-100 p-4 ">
@@ -96,9 +125,8 @@ export default function TeacherMainScreen() {
 
           {/* form */}
           <form onSubmit={updateCourseOutline}>
-            <div className="flex flex-col md:flex-row justify-around">
-{/* 1st row */}
-              {/* Batch Input ------------- */}
+            <div className="flex flex-col md:flex-row justify-around">  {/* 1st row */}
+              {/* Batch Input */}
               <div className="mb-4 w-full md:w-1/4">
                 <label htmlFor="batchDropdown"> Batch </label>
                 <select
@@ -121,7 +149,6 @@ export default function TeacherMainScreen() {
                   )}
                 </select>
               </div>
-
               {/* course ID Input */}
               <div className="mb-4 w-full md:w-1/4">
                 <label htmlFor="courseIdDropdown"> Course ID </label>
@@ -147,9 +174,7 @@ export default function TeacherMainScreen() {
               </div>
             </div>
 
-{/* 2nd row  */}
-            <div className="flex flex-col md:flex-row justify-around">
-             
+            <div className="flex flex-col md:flex-row justify-around">  {/*2nd row*/}
               {/* days Input */}
               <div className="mb-4 w-full md:w-1/4">
                 <label htmlFor="daysDropdown"> Days </label>
@@ -160,7 +185,7 @@ export default function TeacherMainScreen() {
                   {data && data.days && data.days.length > 0 ? (
                     <>
                       <option value="" disabled selected>
-                        Select Batch
+                        Select Days
                       </option>
                       {data.days.map((days, index) => (
                         <option key={index} value={days}>
@@ -173,7 +198,6 @@ export default function TeacherMainScreen() {
                   )}
                 </select>
               </div>
-
               {/* section ID Input */}
               <div className="mb-4 w-full md:w-1/4">
                 <label htmlFor="sectionIdDropdown"> Section ID </label>
@@ -197,7 +221,6 @@ export default function TeacherMainScreen() {
                   )}
                 </select>
               </div>
-
             </div>
 
             {/* covered topics Input */}
@@ -218,11 +241,8 @@ export default function TeacherMainScreen() {
             >
               {loding ? "Loading..." : "Submit"}
             </button>
-
           </form>
-
         </div>
-
       </div>
     </div>
   );
