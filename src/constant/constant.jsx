@@ -28,6 +28,8 @@ const dev_url = 'http://localhost:5000';
 
     getCourseOutline : Base_URL + '/course/course-outline/',
 
+    updateCourseOutline : Base_URL + '/course/cover-topics',
+
     getCoveredTopics :Base_URL + '/course/get-cover-topics/'
 }
 export default AppRouts;

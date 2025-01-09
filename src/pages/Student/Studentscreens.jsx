@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from "react-router";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/context";
 import { MenuFoldOutlined, CloseOutlined } from "@ant-design/icons";
+import { FaBars, FaTimes } from "react-icons/fa";
 import LogoutButton from "../../components/logout";
 import { Link } from "react-router-dom";
 
@@ -29,6 +30,7 @@ export default function Studentscreens() {
             className="text-headingColor focus:outline-none"
           >
             {isOpen ? <CloseOutlined /> : <MenuFoldOutlined />}
+            {isOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
 
@@ -78,7 +80,7 @@ export default function Studentscreens() {
       </div>
 
       {/************************* Center box ******************************/}
-      <div className="flex flex-col flex-end w-full md:w-4/5 border">
+      <div className="flex flex-col flex-end w-full md:w-4/5">
         <Outlet />
       </div>
     </div>
