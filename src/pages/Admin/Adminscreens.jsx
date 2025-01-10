@@ -13,11 +13,11 @@ function Adminscreens() {
     const { user } = useContext(AuthContext);
   
 
-    useEffect(() => {
-      if (!user) {
-        navigate("/");
-      }
-    },[user, navigate]);
+    // useEffect(() => {
+    //   if (!user) {
+    //     navigate("/");
+    //   }
+    // },[user, navigate]);
 
   return (
     <div className="h-screen bg-gray-100 flex shadow ">
