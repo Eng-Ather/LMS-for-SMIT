@@ -47,7 +47,7 @@ const CreateAssignment = () => {
       .then((res) => {
         console.log(res);
         setLoading(false);
-        alert("create Assignment Successfully");
+        alert("Assignment created Successfully");
       })
       .catch((error) => {
         console.log("error: ", error.message);
