@@ -30,6 +30,9 @@ const dev_url = 'http://localhost:5000';
 
     updateCourseOutline : Base_URL + '/course/cover-topics',
 
-    getCoveredTopics :Base_URL + '/course/get-cover-topics/'
+    getCoveredTopics :Base_URL + '/course/get-cover-topics/',
+
+    createAssignment : Base_URL + '/assignment/create-assignment',
+
 }
 export default AppRouts;
