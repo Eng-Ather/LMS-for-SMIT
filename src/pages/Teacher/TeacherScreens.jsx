@@ -3,6 +3,8 @@ import { Outlet, useNavigate } from "react-router";
 import { MenuFoldOutlined, CloseOutlined } from "@ant-design/icons";
 import LogoutButton from "../../components/logout";
 import { AuthContext } from "../../context/context";
+import ToolKit from "../../components/ToolKit";
+
 
 export default function TeacherScreens() {
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ export default function TeacherScreens() {
           <div className="font-serif text-xl text-headingColor">TEACHER</div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-headingColor focus:outline-none text-2xl"
+            className="text-headingColor bg-gray-300 text-sm rounded-md "
           >
             {isOpen ? <CloseOutlined /> : <MenuFoldOutlined />}
           </button>
@@ -50,6 +52,10 @@ export default function TeacherScreens() {
               {item.label}
             </div>
           ))}
+
+          <div className="font-serif text-md md:text-lg cursor-pointer text-headingColor bg-gray-400 border p-4 my-2">
+            <ToolKit />
+          </div>
 
           <div className="font-serif text-md md:text-lg cursor-pointer text-headingColor bg-gray-400 border p-4 my-2">
             <LogoutButton />
