@@ -97,6 +97,7 @@ export default function AssignmentsStatus() {
                     <div className="flex justify-between">
                       <span>{index + 1}. </span>
                       <strong>
+                      {"("}{assignment.assignmentId || "No Topic Name"}{")--"}
                         {assignment.assignment || "No Topic Name"}
                       </strong>
                     </div>

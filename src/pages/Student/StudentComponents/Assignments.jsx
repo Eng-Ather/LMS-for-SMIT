@@ -96,7 +96,7 @@ export default function Assignments() {
   const [currentUserCourseId, setCurrentUserCourseId] = useState(user);
 
   return (
-    <div>
+    <div className="h-screen overflow-auto">
       <NewAssignments />
 
       <AssignmentsStatus />
