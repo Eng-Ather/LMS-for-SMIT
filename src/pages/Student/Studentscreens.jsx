@@ -29,7 +29,6 @@ export default function Studentscreens() {
             onClick={() => setIsOpen(!isOpen)} //to toggel state
             className="text-headingColor focus:outline-none"
           >
-            {isOpen ? <CloseOutlined /> : <MenuFoldOutlined />}
             {isOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>

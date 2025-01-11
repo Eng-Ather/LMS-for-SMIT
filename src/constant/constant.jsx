@@ -36,5 +36,7 @@ const dev_url = 'http://localhost:5000';
 
     getSpecificCourseAssignment : Base_URL + '/assignment/get-assignment/',
 
+    getStudentSubmitedAssigment : Base_URL + '/assignment/get-submited-assignment/'
+
 }
 export default AppRouts;
