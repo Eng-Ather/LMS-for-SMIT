@@ -32,23 +32,19 @@ const AppRouts = {
 
   addTeacher: Base_URL + "/admin/addTeacher",
 
-
   getAllTeacher: Base_URL + "/admin/getallteachers",
+
+  getCoveredTopics: Base_URL + "/course/get-cover-topics/",
+
+  createAssignment: Base_URL + "/assignment/create-assignment",
+
+  submitAssignment: Base_URL + "/assignment/submit-assignment",
+
+  getSpecificCourseAssignment: Base_URL + "/assignment/get-assignment/",
+
+  getStudentSubmitedAssigment:
+    Base_URL + "/assignment/get-submited-assignment/",
+
+  getLeatestAssignment: Base_URL + "/assignment/get-leatest-assignment/",
 };
 export default AppRouts;
-
-    getCoveredTopics :Base_URL + '/course/get-cover-topics/',
-
-    createAssignment : Base_URL + '/assignment/create-assignment',
-
-    submitAssignment : Base_URL + '/assignment/submit-assignment',
-
-    getSpecificCourseAssignment : Base_URL + '/assignment/get-assignment/',
-
-    getStudentSubmitedAssigment : Base_URL + '/assignment/get-submited-assignment/',
-
-    getLeatestAssignment : Base_URL + '/assignment/get-leatest-assignment/',
-
-}
-export default AppRouts;
-
