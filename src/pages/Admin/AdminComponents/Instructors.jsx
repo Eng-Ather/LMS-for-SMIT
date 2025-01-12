@@ -14,78 +14,6 @@ export default function Instructors() {
   const [loading, setLoading] = useState();
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  const instructors = [
-    {
-      id: 1,
-      instructorName: "Ali Khan",
-      positionInField: "Senior Web Developer",
-      status: "Active",
-      email: "ali.khan@example.com",
-    },
-    {
-      id: 2,
-      instructorName: "Ayesha Ahmed",
-      positionInField: "UI/UX Designer",
-      status: "Active",
-      email: "ayesha.ahmed@example.com",
-    },
-    {
-      id: 3,
-      instructorName: "Bilal Siddiqui",
-      positionInField: "Mobile App Specialist",
-      status: "Inactive",
-      email: "bilal.siddiqui@example.com",
-    },
-    {
-      id: 4,
-      instructorName: "Sara Ansari",
-      positionInField: "Software Engineer",
-      status: "Active",
-      email: "sara.ansari@example.com",
-    },
-    {
-      id: 5,
-      instructorName: "Hina Rizwan",
-      positionInField: "Graphic Designer",
-      status: "Active",
-      email: "hina.rizwan@example.com",
-    },
-    {
-      id: 6,
-      instructorName: "Ahmed Faraz",
-      positionInField: "Illustrator Expert",
-      status: "Inactive",
-      email: "ahmed.faraz@example.com",
-    },
-    {
-      id: 7,
-      instructorName: "Usman Sheikh",
-      positionInField: "Data Scientist",
-      status: "Active",
-      email: "usman.sheikh@example.com",
-    },
-    {
-      id: 8,
-      instructorName: "Mehreen Aslam",
-      positionInField: "Machine Learning Engineer",
-      status: "Active",
-      email: "mehreen.aslam@example.com",
-    },
-    {
-      id: 9,
-      instructorName: "Rizwan Ali",
-      positionInField: "Digital Marketing Strategist",
-      status: "Active",
-      email: "rizwan.ali@example.com",
-    },
-    {
-      id: 10,
-      instructorName: "Naveed Sheikh",
-      positionInField: "SEO Specialist",
-      status: "Inactive",
-      email: "naveed.sheikh@example.com",
-    },
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -257,7 +185,7 @@ export default function Instructors() {
                       type="days"
                       id="days"
                       placeholder="Enter Instructor's Days"
-                      className="w-full uppercase border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full uppercase  border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                   <div>
