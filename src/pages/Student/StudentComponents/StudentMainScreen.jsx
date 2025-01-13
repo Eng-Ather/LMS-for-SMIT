@@ -1,9 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/context";
+
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export default function StudentMainScreen() {
   const { user } = useContext(AuthContext);
   const data = user;
+
+  const [assignmentsCompleted, setassignmentsCompleted] = useState(4);
+  const [totalAssignments, settotalAssignments] = useState(6);
+  const [coursePercentage, setcoursePercentage] = useState(85);
+
+  // Animation states for quiz progress bars
+  const [animatedProgress, setAnimatedProgress] = useState([0, 0, 0]);
+
+  useEffect(() => {
+    // Trigger animation when component mounts
+    setAnimatedProgress([85, 90, 75]); // Replace with actual quiz percentages
+  }, []);
 
   if (!data) {
     return (
@@ -13,12 +45,26 @@ export default function StudentMainScreen() {
     );
   }
 
-  return (
-    <div className="min-h-screen overflow-y-scroll bg-gray-100 p-4 md:p-6">
+  const maintenanceData = [
+    {
+      month: "January",
+      paid: <span className="text-green-700">&#10004;</span>,
+    },
+    {
+      month: "February",
+      paid: <span className="text-green-700">&#10004;</span>,
+    },
+    { month: "March", paid: <span className="text-green-700">&#10004;</span> },
+    { month: "April", paid: <span className="text-red-700">&#10060;</span> },
+    { month: "May", paid: <span className="text-green-700">&#10004;</span> },
+    { month: "Jun", paid: <span className="text-green-700">&#10004;</span> },
+  ];
 
+  return (
+    <div className="h-screen overflow-y-scroll bg-gray-100 p-4 md:p-6">
       {/* student profile card */}
       <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
-        <div className=" border bg-blue-50 border-blue-300 rounded-lg p-4 md:p-6 ">
+        <div className=" flex flex-col md:flex-row justify-between  border bg-blue-50 border-blue-300 rounded-lg p-4 md:p-6">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
             <img
               src="https://via.placeholder.com/100"
@@ -45,66 +91,135 @@ export default function StudentMainScreen() {
               </p>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Attendance Record */}
-      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
-        <h3 className="text-lg md:text-2xl font-serif text-headingColor mb-4 border-b pb-2 border-blue-500">
-          Attendance Record
-        </h3>
-        <div className="relative w-full h-48 md:h-64">
-          <div className="flex justify-center items-center h-full text-gray-400 bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-300 rounded-lg animate-pulse">
-            Attendance Graph Placeholder
+          {/* Assignment and Course Outline Stats */}
+          <div className="bg-white shadow-lg rounded-lg p-6 border-t-4 border-navbarColor flex flex-col font-serif">
+            {/* <h3 className="text-xl font-semibold text-headingColor mb-4">Assignment Submission</h3> */}
+
+            <div className="flex items-center justify-between bg-blue-50 border-l-4 border-navbarColor p-2 mb-2 rounded-lg">
+              <div className="flex flex-col">
+                <span className="text-md font-bold text-headingColor">
+                  Assignments Completed:
+                </span>
+                <p className="text-lg font-bold ">
+                  {assignmentsCompleted} / {totalAssignments}
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-blue-50 border-l-4 border-navbarColor p-2 mb-3 rounded-lg">
+              <span className="text-md font-bold text-headingColor">
+                Course Coverage:
+              </span>
+              <h4 className="text-lg font-bold ">{coursePercentage}% </h4>
+            </div>
+
+            {/* Optional: Add some spacing to give the card a more structured feel */}
+            <div className="text-sm  mt-2">
+              Keep track of your progress and stay motivated!
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Quiz Results */}
-      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 animate-fade-in">
-        <h3 className="text-lg md:text-2xl font-serif text-headingColor mb-4 border-b pb-2 border-blue-500">
-          Quiz Results
+      {/* Progress Section */}
+      <div className="flex flex-col sm:flex-row gap-6">
+        {/* Attendance Progress */}
+        <div className=" flex flex-col justify-between bg-blue-50 border-t-4 border-navbarColor w-full sm:w-1/2 shadow-lg rounded-lg p-6">
+          <h3 className="text-xl text-headingColor text-center border bg-white border-blue-300 rounded-lg p-4 md:p-6 font-serif mb-4">
+            Attendance Progress
+          </h3>
+          <Bar
+            data={{
+              labels: [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "jun",
+                "july",
+              ],
+              datasets: [
+                {
+                  label: "Attendance (%)",
+                  data: [85, 90, 78, 55, 92, 75, 65], // Replace with actual attendance data
+                  backgroundColor: "#5F9EE0", //  color for bars
+                },
+              ],
+            }}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: {
+                  display: true,
+                  labels: {
+                    color: "#333", // Dark text for better contrast
+                  },
+                },
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100, // Ensure values are percentage-based
+                  ticks: {
+                    color: "#333", // Dark text for y-axis
+                  },
+                  grid: {
+                    color: "#E5E7EB", // Light gray grid lines
+                  },
+                },
+                x: {
+                  ticks: {
+                    color: "#333", // Dark text for x-axis
+                  },
+                  grid: {
+                    color: "transparent", // Remove x-axis grid lines for cleaner look
+                  },
+                },
+              },
+            }}
+          />
+        </div>
+
+        {/* Quiz Marks Progress */}
+        <div className="flex flex-col bg-blue-50 justify-between border-t-4 border-navbarColor w-full sm:w-1/2  shadow-lg rounded-lg p-6 flex-1">
+          <h3 className="text-xl text-headingColor text-center border bg-white border-blue-300 rounded-lg p-4 md:p-6 font-serif mb-4">
+            Quiz Marks
+          </h3>
+          {animatedProgress.map((progress, index) => (
+            <div key={index} className="mb-4">
+              <p className="font-serif">
+                Quiz {index + 1}: {progress}%
+              </p>
+              <div className="relative w-full bg-gray-200 rounded-full h-6">
+                <div
+                  className="absolute top-0 left-0 h-6 bg-navbarColor rounded-full transition-all duration-1000 ease-out"
+                  style={{ width: `${progress}%` }} // Correctly set the width dynamically
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Maintenance Charges */}
+      <div className="bg-blue-50 border-t-4 border-navbarColor w-full mt-6 shadow-lg rounded-lg p-6">
+        <h3 className="text-xl text-headingColor text-center border bg-white border-blue-300 rounded-lg p-4 md:p-6 font-serif mb-4">
+          Maintenance Charges
         </h3>
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse border border-gray-300">
-            <thead>
-              <tr className="bg-gradient-to-r from-blue-100 to-blue-200 text-gray-700">
-                <th className="border border-gray-300 p-3 text-left text-base font-semibold">
-                  Quiz
-                </th>
-                <th className="border border-gray-300 p-3 text-left text-base font-semibold">
-                  Date
-                </th>
-                <th className="border border-gray-300 p-3 text-left text-base font-semibold">
-                  Score
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                { quiz: "Quiz 1", date: "01/01/2025", score: "85%" },
-                { quiz: "Quiz 2", date: "05/01/2025", score: "90%" },
-                { quiz: "Quiz 3", date: "10/01/2025", score: "75%" },
-              ].map((item, index) => (
-                <tr
-                  key={index}
-                  className={`${
-                    index % 2 === 0 ? "bg-blue-50" : "bg-blue-100"
-                  } hover:bg-blue-200 transition-colors`}
-                >
-                  <td className="border border-gray-300 p-3 text-gray-700">
-                    {item.quiz}
-                  </td>
-                  <td className="border border-gray-300 p-3 text-gray-700">
-                    {item.date}
-                  </td>
-                  <td className="border border-gray-300 p-3 text-gray-700">
-                    {item.score}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="grid grid-cols-2 gap-4 ">
+          {maintenanceData.map((data, index) => (
+            <div
+              key={index}
+              className=" flex justify-around items-center border-t border-blue-300 p-2 m-2 md:mx-8"
+            >
+              <span className="text-gray-700 font-medium">{data.month}</span>
+              <span className={`font-bold ${data.paid.props.className}`}>
+                {data.paid}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
