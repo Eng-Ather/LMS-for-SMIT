@@ -18,5 +18,9 @@ export default defineConfig({
   plugins: [react()],
   build: {
     chunkSizeWarningLimit: 1000, // Increase size limit
+
+    rollupOptions: {
+      external: ['chart.js'], // Add chart.js as an external dependency
+    }
   },
 });
