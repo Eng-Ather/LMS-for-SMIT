@@ -110,7 +110,7 @@ export default function AssignmentsStatus() {
                     </div>
 
                     {submitted ? (
-                      <div className="mt-2">
+                      <div className="mt-2 flex flex-col sm:flex-row gap-3 md:gap-8">
                         {/* Show code link and deployment link if submission exists */}
                         <p>
                           <strong>Code Link:</strong>{" "}

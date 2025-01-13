@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../../context/context";
@@ -77,79 +78,159 @@ export default function NewAssignments() {
         console.log(res);
         setLoading(false);
         alert("Assignment Submited Successfully");
+
+        // Reset the form fields after success operation
+      e.target.reset();  // This will clear the input fields
+
       })
       .catch((error) => {
         console.log("error: ", error.message);
         setLoading(false);
-        alert("Error during submission ")
+        alert("Error during submission ");
       });
   };
 
   return (
-    <div className="w-full px-3">
-      {/* New Assignment */}
-      <div className="my-8 bg-white border-t-4 border-green-300 shadow-lg rounded-lg p-4 md:p-6">
-        <h3 className="font-serif text-subHeadingColor text-2xl md:text-4xl text-center border-b pb-2 border-subHeadingColor mb-6">
-          New Assignment
-        </h3>
+    // <div className="w-full px-3">
+    //   {/* New Assignment */}
+    //   <div className="my-8 bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6">
+    //     <h3 className="font-serif text-headingColor text-2xl md:text-4xl text-center border-b pb-2 border-blue-500 mb-6">
+    //       New Assignment
+    //     </h3>
 
-        <div>
-          {latestAssignment?.data ? (
-            <div className="font-serif font-semibold py-2 mb-6">
-              <p>Assignment ID: {latestAssignment.data.assignmentId}</p>
-              <p> Assignment: {latestAssignment.data.assignment}</p>
-            </div>
-          ) : (
-            <p>No latest assignment found.</p>
-          )}
+    //     <div>
+    //       {latestAssignment?.data ? (
+    //         <div className="font-serif font-semibold py-2 mb-6">
+    //           <p>Assignment ID: {latestAssignment.data.assignmentId}</p>
+    //           <p> Assignment: {latestAssignment.data.assignment}</p>
+    //         </div>
+    //       ) : (
+    //         <p>No latest assignment found.</p>
+    //       )}
+    //     </div>
+
+    //     {/* New Feeds Form */}
+    //     <form onSubmit={handleAssignmentSubmission}>
+    //       <div className="flex flex-col md:flex-row gap-4">
+    //         {/* Code Link */}
+    //         <div className="mb-4 w-full md:w-1/2">
+    //           <label
+    //             htmlFor="codeLink"
+    //             className="block text-sm font-medium text-gray-700"
+    //           >
+    //             Code Link
+    //           </label>
+    //           <input
+    //             type="text"
+    //             id="codeLink"
+    //             placeholder="Enter your Code Link"
+    //             className="w-full border border-blue-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    //           />
+    //         </div>
+
+    //         {/* Deployment Link */}
+    //         <div className="mb-4 w-full md:w-1/2">
+    //           <label
+    //             htmlFor="deploymentLink"
+    //             className="block text-sm font-medium text-gray-700"
+    //           >
+    //             Deployment Link
+    //           </label>
+    //           <input
+    //             type="text"
+    //             id="deploymentLink"
+    //             placeholder="Enter your Deployment Link"
+    //             className="w-full border border-blue-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    //           />
+    //         </div>
+    //       </div>
+
+    //       {/* Submit Button */}
+    //       <button
+    //         type="submit"
+    //         disabled={loading}
+    //         className="w-full bg-blue-400 font-serif font-bold text-lg text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
+    //       >
+    //         {loading ? "Submitting..." : "Submit"}
+    //       </button>
+    //     </form>
+    //   </div>
+    // </div>
+    
+
+    <div className="w-full px-3">
+  {/* New Assignment */}
+  <div className="my-8 bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6">
+    <h3 className="font-serif text-headingColor text-2xl md:text-4xl text-center border-b pb-2 border-blue-500 mb-6">
+      New Assignment
+    </h3>
+
+    <div>
+      {latestAssignment?.data ? (
+        <div className="p-4 bg-blue-100 border border-blue-300 rounded-lg shadow mb-6">
+          <p className="font-serif font-semibold">
+            <strong>Assignment ID:</strong> {latestAssignment.data.assignmentId}
+          </p>
+          <p className="font-serif font-semibold">
+            <strong>Assignment:</strong> {latestAssignment.data.assignment}
+          </p>
+        </div>
+      ) : (
+        <div className="p-4 bg-blue-100 border border-blue-300 rounded-lg shadow text-center">
+          <strong>No latest assignment found.</strong>
+        </div>
+      )}
+    </div>
+
+    {/* New Feeds Form */}
+    <form onSubmit={handleAssignmentSubmission}>
+      <div className="flex flex-col md:flex-row gap-4">
+        {/* Code Link */}
+        <div className="w-full md:w-1/2">
+          <label
+            htmlFor="codeLink"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Code Link
+          </label>
+          <input
+            type="text"
+            id="codeLink"
+            placeholder="Enter your Code Link"
+            className="w-full border border-blue-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          />
         </div>
 
-        {/* New Feeds Form */}
-        <form onSubmit={handleAssignmentSubmission}>
-          <div className="flex flex-col md:flex-row gap-4">
-            {/* Code Link */}
-            <div className="mb-4 w-full md:w-1/2">
-              <label
-                htmlFor="codeLink"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Code Link
-              </label>
-              <input
-                type="text"
-                id="codeLink"
-                placeholder="Enter your Code Link"
-                className="w-full border border-green-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-
-            {/* Deployment Link */}
-            <div className="mb-4 w-full md:w-1/2">
-              <label
-                htmlFor="deploymentLink"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Deployment Link
-              </label>
-              <input
-                type="text"
-                id="deploymentLink"
-                placeholder="Enter your Deployment Link"
-                className="w-full border border-green-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-          </div>
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-subHeadingColor font-serif font-bold text-lg text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300"
+        {/* Deployment Link */}
+        <div className="w-full md:w-1/2">
+          <label
+            htmlFor="deploymentLink"
+            className="block text-sm font-medium text-gray-700"
           >
-            {loading ? "Submitting..." : "Submit"}
-          </button>
-        </form>
+            Deployment Link
+          </label>
+          <input
+            type="text"
+            id="deploymentLink"
+            placeholder="Enter your Deployment Link"
+            className="w-full border border-blue-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          />
+        </div>
       </div>
-    </div>
+
+      {/* Submit Button */}
+      <div className="mt-4">
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-400 font-serif font-bold text-lg text-white py-2 px-6 rounded-lg hover:bg-blue-500 hover:shadow-lg transition duration-300"
+        >
+          {loading ? "Submitting..." : "Submit"}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
   );
 }

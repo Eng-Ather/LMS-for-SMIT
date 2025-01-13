@@ -48,6 +48,8 @@ const CreateAssignment = () => {
         console.log(res);
         setLoading(false);
         alert("Assignment created Successfully");
+        // Reset the form fields after success operation
+      e.target.reset();  // This will clear the input fields
       })
       .catch((error) => {
         console.log("error: ", error.message);
