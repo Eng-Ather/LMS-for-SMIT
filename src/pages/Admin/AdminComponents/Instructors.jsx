@@ -60,8 +60,11 @@ export default function Instructors() {
       <h1 className="text-xl md:text-4xl text-center p-4">
         Known for Industry's Best Instructors
       </h1>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <div className="flex items-center justify-end flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="flex items-center justify-between flex-column flex-wrap md:flex-row md:space-y-0 p-2 bg-white dark:bg-gray-900">
+        <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg font-bold p-4 ">
+            Total Instructors : {teachers.length}
+          </div>
           <button
             onClick={openModal}
             className="bg-blue-500 font-serif font-bold text-base text-white py-1 px-2 m-2 rounded-lg hover:bg-blue-700 transition duration-300"
@@ -100,7 +103,7 @@ export default function Instructors() {
                     <input
                       type="email"
                       id="email"
-                      placeholder="Enter Instructor email"
+                      placeholder="user@gmail.com"
                       className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -114,7 +117,7 @@ export default function Instructors() {
                     <input
                       type="password"
                       id="password"
-                      placeholder="Enter Instructor email"
+                      placeholder="- - - - - -"
                       className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -128,7 +131,7 @@ export default function Instructors() {
                     <input
                       type="userid"
                       id="userid"
-                      placeholder="Enter Instructor's UserId"
+                      placeholder="sir-user-000"
                       className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -142,7 +145,7 @@ export default function Instructors() {
                     <input
                       type="batches"
                       id="batches"
-                      placeholder="Enter Instructor's Batches"
+                      placeholder="Batch-00"
                       className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -156,7 +159,7 @@ export default function Instructors() {
                     <input
                       type="courses"
                       id="courses"
-                      placeholder="Enter Instructor's Courses"
+                      placeholder="Courses"
                       className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -170,7 +173,7 @@ export default function Instructors() {
                     <input
                       type="courseid"
                       id="courseid"
-                      placeholder="Enter Instructor's CourseId"
+                      placeholder="WMA-000"
                       className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -184,8 +187,8 @@ export default function Instructors() {
                     <input
                       type="days"
                       id="days"
-                      placeholder="Enter Instructor's Days"
-                      className="w-full uppercase  border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="TTS MWF Weekend Sunday"
+                      className="w-full border border-gray-300 uppercase rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                   <div>
@@ -198,7 +201,7 @@ export default function Instructors() {
                     <input
                       type="sectionid"
                       id="sectionid"
-                      placeholder="Enter Instructor's SectionId"
+                      placeholder="0-to-0"
                       className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -239,24 +242,14 @@ export default function Instructors() {
             </tr>
           </thead>
           <tbody>
-            {teachers.map((data) => (
+            {teachers.map((data, index) => (
               <tr
                 key={data._id}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
                 <td className="w-4 p-4">
                   <div className="flex items-center">
-                    <input
-                      id="checkbox-table-search-1"
-                      type="checkbox"
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label
-                      htmlFor="checkbox-table-search-1"
-                      className="sr-only"
-                    >
-                      checkbox
-                    </label>
+                    <span className="font-bold">{index + 1}.</span>
                   </div>
                 </td>
                 <th

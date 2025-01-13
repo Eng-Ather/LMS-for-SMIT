@@ -4,7 +4,6 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import AppRouts from "../constant/constant";
 
-
 // Create a context
 export const AuthContext = createContext();
 
@@ -28,10 +27,9 @@ function AuthContextProvider({ children }) {
         setSession(token); // Update session state
         await getUserInfo(token); // Use token directly
         console.log(user);
-        
-        // await getUserInfo(session);
 
-      } 
+        // await getUserInfo(session);
+      }
       // If session exists but token doesn't, get user info
       else if (session && !token) {
         await getUserInfo(session);
@@ -42,10 +40,9 @@ function AuthContextProvider({ children }) {
         setLoading(false);
       }
     };
-  
+
     fetchUserData(); // Call the async function inside useEffect
   }, [token, session]); // Dependencies: token and session
-  
 
   const getUserInfo = async (currentUserToken) => {
     try {
@@ -57,14 +54,11 @@ function AuthContextProvider({ children }) {
       });
       setUser(response.data.users); // Setting user data as global state
       console.log(response.data.users);
-      
+
       console.log(user);
-      
-    } 
-    catch (err) {
+    } catch (err) {
       console.error("Error fetching user info: ", err);
-    } 
-    finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -72,7 +66,9 @@ function AuthContextProvider({ children }) {
   return (
     <AuthContext.Provider
       value={{ user, setUser, token, setToken, session, setSession, loading }}
-    > {children}
+    >
+      {" "}
+      {children}
       {console.log(user)}
     </AuthContext.Provider>
   );

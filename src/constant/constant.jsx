@@ -27,5 +27,9 @@ const AppRouts = {
   getCoveredTopics: Base_URL + "/course/get-cover-topics/",
   addTeacher: Base_URL + "/admin/addTeacher",
   getAllTeacher: Base_URL + "/admin/getallteachers",
+  addCourse: Base_URL + "/admin/addCourse",
+  getAllCourses: Base_URL + "/admin/getAllCourses",
+  addStudent: Base_URL + "/admin/addStudent",
+  getAllStudents: Base_URL + "/admin/getAllStudents",
 };
 export default AppRouts;
