@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../../context/context";
 import AppRouts from "../../../constant/constant";
+import PendingAssignments from "./PendingAssignment";
 
 export default function AssignmentsStatus() {
   const { user } = useContext(AuthContext);
@@ -105,7 +106,11 @@ export default function AssignmentsStatus() {
                     <div className="mt-2">
                       {/* Show submission status */}
                       <strong className={submitted ? "text-green-600" : "text-red-600"}>
-                        Status: {submitted ? "Submitted" : "Not Submitted"}
+                        Status: {submitted ? "Submitted" 
+                        : <div>
+                          <PendingAssignments  assignment={assignment.assignment} assignmentId={assignment.assignmentId} />
+                        </div>
+                        }
                       </strong>
                     </div>
 
@@ -152,3 +157,10 @@ export default function AssignmentsStatus() {
       </div>
   );
 }
+//______________________________________________ 
+// <div className="mt-2">
+                      {/* Show submission status */}
+                    //   <strong className={submitted ? "text-green-600" : "text-red-600"}>
+                    //     Status: {submitted ? "Submitted" : "Not Submitted"}
+                    //   </strong>
+                    // </div>

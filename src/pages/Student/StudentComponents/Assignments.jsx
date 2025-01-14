@@ -2,7 +2,6 @@ import React, {useState, useContext } from "react";
 import { AuthContext } from "../../../context/context";
 import AssignmentsStatus from "./AssignmentStatus";
 import AssignmentsStats from "../AssignmentState";
-import NewAssignments from "./NewAssignment";
 
 export default function Assignments() {
   const { user } = useContext(AuthContext);
@@ -18,9 +17,6 @@ export default function Assignments() {
         </h3>
         <AssignmentsStats />
       </div>
-
-      {/* New Assignment */}
-      <NewAssignments />
 
       {/* All Assigment (submited and pending both) */}
       <AssignmentsStatus />
