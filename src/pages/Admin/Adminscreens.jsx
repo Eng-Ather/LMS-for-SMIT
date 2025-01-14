@@ -47,14 +47,14 @@ function Adminscreens() {
           </div>
 
           <div
-            onClick={() => navigate("/addcourse")}
+            onClick={() => navigate("/addstudent")}
             className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
           >
             Students
           </div>
 
           <div
-            onClick={() => navigate("/addstudent")}
+            onClick={() => navigate("/addcourse")}
             className="font-serif text-md md:text-lg cursor-pointer  text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
           >
             Course
