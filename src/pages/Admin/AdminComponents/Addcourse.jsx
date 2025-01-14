@@ -2,6 +2,7 @@ import { CloseOutlined, PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AppRouts from "../../../constant/constant";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 export default function Addcourse() {
   const [loading, setLoading] = useState();
@@ -58,9 +59,12 @@ export default function Addcourse() {
             Total Courses : {Courses.length}
           </div>
           <button
+            data-tooltip-id="addcourse-tooltip"
             onClick={openModal}
             className="bg-blue-500 font-serif font-bold text-base text-white py-1 px-2 m-2 rounded-lg hover:bg-blue-700 transition duration-300"
           >
+            <ReactTooltip id="addcourse-tooltip" place="bottom" content="Add Course" />
+
             <PlusOutlined />
           </button>
         </div>

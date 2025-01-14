@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import axios from "axios";
 import AppRouts from "../../../constant/constant";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 export default function Instructors() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -62,13 +63,20 @@ export default function Instructors() {
       </h1>
       <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="flex items-center justify-between flex-column flex-wrap md:flex-row md:space-y-0 p-2 bg-white dark:bg-gray-900">
-        <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg font-bold p-4 ">
+          <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg font-bold p-4 ">
             Total Instructors : {teachers.length}
           </div>
           <button
+            data-tooltip-id="addStudent-tooltip"
             onClick={openModal}
             className="bg-blue-500 font-serif font-bold text-base text-white py-1 px-2 m-2 rounded-lg hover:bg-blue-700 transition duration-300"
           >
+            <ReactTooltip
+              id="addcourse-tooltip"
+              place="bottom"
+              content="Add Course"
+            />
+
             <PlusOutlined />
           </button>
         </div>
