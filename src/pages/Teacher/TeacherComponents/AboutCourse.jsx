@@ -5,7 +5,7 @@ export default function AboutCourse() {
   const courseDetails = [
     {
       courseName: "Web & Mobile App Development",
-      batchName: "Batch 1",
+      batchName: "Batch 12",
       duration: "3 months",
       enrolledStudents: 25,
       totalAssignments: 12,
