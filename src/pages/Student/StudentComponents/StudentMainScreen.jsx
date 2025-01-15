@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/context";
 import AssignmentsStats from "../AssignmentState";
+import CoveredCoursePercentage from "./CoveredCoursePercentage";
 
 import {
   Chart as ChartJS,
@@ -11,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
@@ -63,10 +65,8 @@ export default function StudentMainScreen() {
 
   return (
     <div className="h-screen overflow-y-scroll bg-gray-100 p-4 md:p-6">
-     
       <div className="bg-blue-50 flex flex-col lg:flex-row justify-between  border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
-     
-      {/* student profile card */}
+        {/* student profile card */}
         <div className="w-full lg:w-1/2 flex flex-col md:flex-row justify-between rounded-lg p-4 md:p-6">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
             <img
@@ -94,13 +94,19 @@ export default function StudentMainScreen() {
               </p>
             </div>
           </div>
-          
         </div>
 
-        {/* Assignment and Course Outline Stats */}
-        <div className="w-full lg:w-1/2">
-          <AssignmentsStats/>
+        <div className="w-full flex flex-col justify-between lg:w-1/2 h-72">
+          <div className="w-full h-28">
+            {/* <covered corse Stats/> */}
+            <CoveredCoursePercentage />
           </div>
+
+          {/* Assignment Stats */}
+          <div className="w-full">
+            <AssignmentsStats />
+          </div>
+        </div>
       </div>
 
       {/* Progress Section */}
