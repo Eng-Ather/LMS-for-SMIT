@@ -63,7 +63,7 @@ export default function PendingAssignments({ assignment, assignmentId }) {
       {/* Modal */}
       {isModal && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white w-full md:w-1/2 rounded-lg p-6 mx-6 ">
+          <div className="bg-white w-full lg:w-1/2 rounded-xl p-6 mx-6 ">
             {assignment && assignmentId ? (
               <div className="mb-4 border-b pb-2 border-blue-500 font-serif text-center text-headingColor text-md md:text-lg ">
                 <p>

@@ -95,8 +95,8 @@ const CoveredCoursePercentage = () => {
   return (
     <div className=" ">
       {/* Course Coverage */}
-      <div className=" bg-blue-50 border-b-2 w-full h-fit rounded-lg p-4 flex flex-row items-center justify-between">
-        <h5 className="font-semibold text-sm md:text-md text-cyan-800 text-start md:text-center w-1/2 mb-6">
+      <div className=" border-b-2 w-full h-fit rounded-lg p-4 flex flex-row items-center justify-between">
+        <h5 className="font-semibold text-sm md:text-md text-cyan-800 text-start md:text-center w-1/2 mb-6 ">
           Course Coverage {percentageOfCoverTopics}%
         </h5>
         <div className="  sm:w-1/2 h-28 text-right">
