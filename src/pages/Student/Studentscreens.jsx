@@ -20,7 +20,7 @@ export default function Studentscreens() {
   }, [user, navigate]);
 
   return (
-    <div className="h-screen overflow-y-scroll flex flex-col md:flex-row shadow ">
+    <div className="h-screen over flex flex-col md:flex-row shadow">
       {/********************** Side block (Dropdown for small screens) ****************************/}
 
       <div className="bg-cyan-800 w-full md:w-1/5">
@@ -86,3 +86,4 @@ export default function Studentscreens() {
     </div>
   );
 }
+

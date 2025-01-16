@@ -9,6 +9,7 @@ import AppRouts from "../constant/constant.jsx";
 import Cookies from "js-cookie";
 import { useContext } from "react";
 import { AuthContext } from "../context/context.jsx";
+import { CloseOutlined } from "@ant-design/icons";
 
 function LoginModal() {
   const [loding, setLoading] = useState();
@@ -105,10 +106,18 @@ function LoginModal() {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white w-full md:w-1/2 rounded-lg p-6 mx-6 ">
-            <h4 className="font-serif text-center text-headingColor text-lg md:text-2xl lg:text-3xl mb-4">
-              Login to Your Account
-            </h4>
+          <div className="bg-white w-full md:w-3/5 lg:w-5/12 rounded-lg p-6 mx-6 ">
+            <div className="flex justify-between">
+              <span className="w-11/12">
+                <h4 className="font-serif text-headingColor text-lg md:text-2xl lg:text-3xl mb-4">
+                  Login to Your Account
+                </h4>
+              </span>
+              <span className="w-1/12 pl-6 text-3xl">
+                <CloseOutlined onClick={closeModal} />
+              </span>
+              {/* Close Button */}
+            </div>
             {/* Login Form */}
             <form onSubmit={handellogin}>
               {/* Email Input */}
@@ -143,24 +152,16 @@ function LoginModal() {
                 />
               </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="w-full bg-navbarColor font-serif font-bold text-lg text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
-              >
-                {loding ? "Loading..." : "Submit"}
-              </button>
+              <div className="grid gap-4 justify-center mt-4">
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="w-full bg-navbarColor font-serif font-bold text-lg text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
+                >
+                  {loding ? "Loading..." : "Submit"}
+                </button>
+              </div>
             </form>
-
-            {/* Close Button */}
-            <div className="flex justify-center mt-4">
-              <button
-                onClick={closeModal}
-                className="w-full font-serif font-bold bg-subHeadingColor text-lg text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300"
-              >
-                Close
-              </button>
-            </div>
           </div>
         </div>
       )}
