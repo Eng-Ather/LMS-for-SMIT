@@ -56,20 +56,26 @@ export default function AddStudent() {
 
   return (
     <div className=" h-screen overflow-y-scroll p-2">
+      <div className="m-4 flex flex-col lg:flex-row items-end justify-between my-8 bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6">
+        <h3 className="w-full lg:w-1/3 font-serif text-headingColor text-2xl md:text-3xl lg:text-4xl text-center mb-6">
+          Enrolled Students
+        </h3>
+
+        <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg font-bold p-6 ">
+          Total Students : {Students.length}
+        </div>
+      </div>
       <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto">
-        <div className="flex items-center justify-between flex-column flex-wrap md:flex-row md:space-y-0 p-2 bg-white dark:bg-gray-900">
-          <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg font-bold p-4 ">
-            Total Students : {Students.length}
-          </div>
+        <div className="flex items-center justify-end flex-column flex-wrap md:flex-row md:space-y-0 bg-white dark:bg-gray-900">
           <button
-          data-tooltip-id="addStudent-tooltip"
+            data-tooltip-id="addInstructor-tooltip"
             onClick={openModal}
             className="bg-blue-500 font-serif font-bold text-base text-white py-1 px-2 m-2 rounded-lg hover:bg-blue-700 transition duration-300"
           >
             <ReactTooltip
-              id="addStudent-tooltip"
+              id="addInstructor-tooltip"
               place="bottom"
-              content="Add Course"
+              content="Add Instructor"
             />
 
             <PlusOutlined />
@@ -78,9 +84,9 @@ export default function AddStudent() {
 
         {isModalOpen && (
           <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white w-full md:w-1/2 rounded-lg p-6 mx-6 ">
+            <div className="bg-white w-full md:w-1/2 rounded-lg p-4 md:p-6 mx-6">
               <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   <div>
                     <label
                       htmlFor="name"
@@ -250,20 +256,19 @@ export default function AddStudent() {
                       className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
+                </div>
+                <div className="flex justify-between mt-2">
+                  <span className="flex w-11/12 justify-center">
                     <button
                       type="submit"
-                      className="w-full bg-navbarColor font-serif font-bold text-lg text-white py-2 px-4  rounded-lg hover:bg-blue-700 transition duration-300"
+                      className="w-1/2 lg:w-2/12 bg-navbarColor font-serif font-bold text-lg text-white py-2 px-4  rounded-lg hover:bg-blue-700 transition duration-300"
                     >
                       {loading ? "Loading..." : "Submit"}
                     </button>
-                    <button
-                      onClick={closeModal}
-                      className="w-full font-serif font-bold bg-subHeadingColor text-lg text-white rounded-lg hover:bg-green-700 transition duration-300"
-                    >
-                      <CloseOutlined />
-                    </button>
-                  </div>
+                  </span>
+                  <span className="flex items-end w-1/12 sm:pl-10 md:pl-4 lg:pl-10">
+                    <CloseOutlined className="text-2xl" onClick={closeModal} />
+                  </span>
                 </div>
               </form>
             </div>
@@ -271,45 +276,48 @@ export default function AddStudent() {
         )}
 
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-900 uppercase dark:text-gray-400">
+          <thead className="text-xs bg-blue-50 text-gray-900 uppercase dark:text-gray-400">
             <tr>
               <th></th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-2 py-4">
                 Student Name
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-2 py-4">
                 Father Name
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-2 py-4">
                 CNIC-No.
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-2 py-4">
                 Roll No.
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-2 py-4">
                 Course
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-2 py-4">
                 Batch
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-2 py-4">
                 Days
               </th>
             </tr>
           </thead>
           <tbody>
             {Students.map((data, index) => (
-              <tr key={data._id} className="bg-white dark:bg-gray-800">
+              <tr
+                key={data._id}
+                className="bg-blue-50 border-b hover:bg-blue-100 hover:text-gray-900 dark:bg-gray-800"
+              >
                 <th className="text-xs px-2">{index + 1}.</th>
                 <th
                   scope="row"
-                  className="px-2 py-3 uppercase font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="px-2 py-3 text-base font-semibold text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   {data.name}
                 </th>
                 <th
                   scope="row"
-                  className="px-2 py-3 uppercase font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   {data.fatherName}
                 </th>

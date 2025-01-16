@@ -22,6 +22,7 @@ import AboutCourse from "./pages/Teacher/TeacherComponents/AboutCourse.jsx";
 import StudentsAssignments from "./pages/Teacher/TeacherComponents/StudentsAssignments.jsx";
 import Instructors from "./pages/Admin/AdminComponents/Instructors.jsx";
 import TeacherNotifications from "./pages/Teacher/TeacherComponents/TeacherNotifications.jsx";
+import DynamicCourseDetails from "./pages/Admin/AdminComponents/DynamicCourseDetails.jsx";
 
 export default function Approuter() {
   return (
@@ -37,6 +38,7 @@ export default function Approuter() {
           <Route element={<Adminscreens />}>
             <Route path="/admin" element={<MainScreen />} />
             <Route path="/addcourse" element={<Addcourse />} />
+            <Route path="/addcourse/:courseId" element={<DynamicCourseDetails />} />
             <Route path="/addstudent" element={<AddStudent />} />
             <Route path="/newannouncement" element={<NewAnnoucements />} />
             <Route path="/instructors" element={<Instructors />} />
