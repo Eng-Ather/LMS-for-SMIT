@@ -60,9 +60,9 @@ const CoveredTopic = () => {
     };
 
     return (    
-      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
-        <div className="border bg-blue-50 border-blue-300 rounded-lg p-4 md:p-6">
-          <h3 className="text-lg md:text-2xl font-serif text-headingColor mb-4 border-b pb-2 border-blue-500">
+      <div className="bg-white  shadow-lg rounded-lg ">
+        <div className="border bg-blue-50 border-blue-300 rounded-lg p-3">
+          <h3 className="text-lg md:text-2xl text-center font-serif text-headingColor mb-4 border-b p-2 border-blue-500">
             Update Course Outline
           </h3>
 
@@ -171,7 +171,7 @@ const CoveredTopic = () => {
             </div>
 
             {/* covered topics Input */}
-            <div className="mb-4">
+            <div className="my-3">
               <label htmlFor="coveredTopic"> Covered Topics </label>
               <input
                 type="text"
