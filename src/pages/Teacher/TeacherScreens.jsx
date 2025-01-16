@@ -57,9 +57,9 @@ export default function TeacherScreens() {
             </div>
           ))}
 
-          <div  className="font-serif text-md md:text-lg cursor-pointer text-white bg-cyan-900 hover:border p-4 my-2  hover:border-white"
+          {/* <div  className="font-serif text-md md:text-lg cursor-pointer text-white bg-cyan-900 hover:border p-4 my-2  hover:border-white"
           >  <ToolKit />
-          </div>
+          </div> */}
 
           <div className="font-serif text-md md:text-lg cursor-pointer text-white bg-cyan-900 hover:border p-4 my-2  hover:border-white"
           >  <LogoutButton />
