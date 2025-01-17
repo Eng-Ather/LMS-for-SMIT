@@ -33,7 +33,7 @@ export default function AddStudent() {
     axios
       .post(AppRouts.addStudent, obj)
       .then((res) => {
-        console.log(res);
+        closeModal();
       })
       .catch((err) => {
         console.log(err);

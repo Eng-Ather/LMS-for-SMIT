@@ -36,6 +36,7 @@ export default function Instructors() {
       .post(AppRouts.addTeacher, obj)
       .then((res) => {
         console.log(res);
+        closeModal()
       })
       .catch((err) => {
         console.log(err);

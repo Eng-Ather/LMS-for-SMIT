@@ -25,7 +25,7 @@ export default function DynamicCourseDetails() {
   return (
     <div className=" h-screen overflow-y-scroll p-10">
       <div className="m-4 grid lg:flex-row items-end justify-center my-8 bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6">
-        <h3 className="border border-black font-serif text-headingColor text-2xl md:text-3xl lg:text-5xl text-center mb-6">
+        <h3 className="font-serif text-headingColor text-2xl md:text-3xl lg:text-5xl text-center mb-6">
           {course.courseTitle}
         </h3>
         <div class="flex items-center text-xl font-mono justify-center">
