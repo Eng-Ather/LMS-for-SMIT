@@ -1,4 +1,5 @@
 import React from "react";
+import AssignmentsResponse from "./AssignmentResponse";
 
 export default function StudentsAssignments() {
   const studentAssignments = [
@@ -102,6 +103,13 @@ export default function StudentsAssignments() {
 
   return (
     <div className="relative overflow-x-auto shadow-md h-screen overflow-y-scroll sm:rounded-lg">
+    
+    <div className="border border-red-500">
+      <AssignmentsResponse/>
+    </div>
+    
+    
+    
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -161,5 +169,6 @@ export default function StudentsAssignments() {
         </tbody>
       </table>
     </div>
+    
   );
 }
