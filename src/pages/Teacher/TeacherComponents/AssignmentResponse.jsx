@@ -1,260 +1,164 @@
 
-// import axios from "axios";
-// import React, { useEffect, useState, useContext } from "react";
-// import { AuthContext } from "../../../context/context";
-// import AppRouts from "../../../constant/constant";
-// // import PendingAssignments from "./PendingAssignment";
 
-// export default function AssignmentsResponse() {
-//   const { user } = useContext(AuthContext);
-//   const [currentUserCourseId, setCurrentUserCourseId] = useState(user);
-//   const [assignments, setAssignments] = useState([]); // State for assignments
-//   const [submitedAssignment, setsubmitedAssignment] = useState([]); // State for Submited assignments
-//   const [passignment, setpassignment] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   // let submitedAssignment;
-//   const id = currentUserCourseId?.courseId;
-//   const courseId = currentUserCourseId?.courseId;
-//   const teacherId = currentUserCourseId?.userId ;
-//   const sectionId = currentUserCourseId?.sectionId;
-//   const days = currentUserCourseId?.days;
-//   const batch = currentUserCourseId?.batch;
-// //   const studentId = currentUserCourseId?.userId;
-
-
-//   console.log("current user", user);
-  
-
-//   // to get All assignment of user assign by teacher
-//   useEffect(() => {
-//     if (!sectionId) return;
-  
-//     const fetchSpecificCourseAssignment = async () => {
-//       try {
-//         // Create an array of Promises for all sectionId values
-//         const assignmentResponses = sectionId.map((sectionId, i) =>
-//           axios.get(
-//             `${AppRouts.getSpecificCourseAssignment}${courseId[i]}/${teacherId}/${sectionId}/${days[i]}/${batch[i]}`
-//           )
-//         );
-  
-//         // Wait for all Promises to resolve
-//         const responses = await Promise.all(assignmentResponses);
-  
-//         // Extract data from each response and combine them
-//         const allAssignments = responses.map((response) => response.data.data);
-  
-//         console.log("Latest response:", allAssignments);
-  
-//         setAssignments(allAssignments ); // Set combined assignments
-//         console.log("All Assignment=>",assignments);
-        
-//         setLoading(false);
-//       } catch (error) {
-//         setError(error.message);
-//         setLoading(false);
-//       }
-//     };
-  
-//     fetchSpecificCourseAssignment();
-//   }, [courseId, teacherId, sectionId, days, batch]);
-  
-
-//   //to get user Submited Assignment
-// //   useEffect(() => {
-// //     if (!id) return;
-
-// //     const fetchStudentSubmitedAssignment = async () => {
-// //       try {
-// //         const res = await axios.get(
-// //           `${AppRouts.getStudentSubmitedAssigment}${batch}/${courseId}/${sectionId}/${days}/${studentId}`
-// //         );
-// //         console.log(res.data.data);
-
-// //         setsubmitedAssignment(res.data.data); // Set assignments
-
-// //         console.log("submitedAssignment", submitedAssignment);
-
-// //         setLoading(false);
-// //       } catch (error) {
-// //         setError(error.message);
-// //         setLoading(false);
-// //       }
-// //     };
-
-// //     fetchStudentSubmitedAssignment();
-// //   }, [courseId, teacherId, sectionId, days, batch]);
-
-//   if (loading) return <div>Loading...</div>;
-//   if (error) return <div>Error: {error}</div>;
-
-//   return (
-//     <div className="w-full px-3">
-//       {/* Submited Assignments Record */}
-//       <div className="my-8 bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6">
-//         <h3 className="font-serif text-headingColor text-2xl md:text-4xl text-center border-b pb-2 border-blue-500 mb-6">
-//           Assignments Status
-//         </h3>
-
-//         <div>
-//           {assignments.length > 0 ? (
-//             assignments.map((as, index) => {
-
-//               {
-//                 as.length>0?(as.map((a,i)=>{
-//                   <strong>
-//                     {a.assignment}
-//                   </strong>
-//                 })):("xxxxx")
-//               }
-              
-//               // <div className="w-full lg:w-1/2">
-//               //       <span>{index + 1}. </span>
-
-//               //       <strong>{assignment || "No Topic Name"} </strong>
-                    
-//               // </div>
-//             }))
-//             :(
-//               <div className="w-full text-center p-4 bg-blue-100 border border-blue-300 rounded-lg shadow hover:bg-blue-200 transition">
-//                  ------ x ------
-//               </div>
-//             )
-//           }
-//             </div>
-
-        
-//       </div>
-//     </div>
-
-    
-//   );
-// }
-
-// ------------------------
-
-import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
+import axios from "axios";
 import { AuthContext } from "../../../context/context";
 import AppRouts from "../../../constant/constant";
 
 export default function AssignmentsResponse() {
   const { user } = useContext(AuthContext);
-  const [currentUserCourseId, setCurrentUserCourseId] = useState(user);
-  const [assignments, setAssignments] = useState([]); // State for assignments
-  const [loading, setLoading] = useState(true);
+  const [assignments, setAssignments] = useState([]);
+  const [submittedAssignments, setSubmittedAssignments] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const courseId = currentUserCourseId?.courseId;
-  const teacherId = currentUserCourseId?.userId;
-  const sectionId = currentUserCourseId?.sectionId;
-  const days = currentUserCourseId?.days;
-  const batch = currentUserCourseId?.batch;
+  const courseId = user?.courseId;
+  const teacherId = user?.userId;
+  const sectionId = user?.sectionId;
+  const days = user?.days;
+  const batch = user?.batch;
 
   useEffect(() => {
-    if (!sectionId) return;
+    const fetchAssignments = async () => {
+      if (!sectionId || sectionId.length === 0) return;
 
-    const fetchSpecificCourseAssignment = async () => {
+      setLoading(true);
       try {
-        const assignmentResponses = sectionId.map((sectionId, i) =>
+        const requests = sectionId.map((id, index) =>
           axios.get(
-            `${AppRouts.getSpecificCourseAssignment}${courseId[i]}/${teacherId}/${sectionId}/${days[i]}/${batch[i]}`
+            `${AppRouts.getSpecificCourseAssignment}${courseId[index]}/${teacherId}/${id}/${days[index]}/${batch[index]}`
           )
         );
-
-        const responses = await Promise.all(assignmentResponses);
-        const allAssignments = responses.map((response) => response.data.data);
-
-        setAssignments(allAssignments); // Set combined assignments
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
+        const responses = await Promise.all(requests);
+        setAssignments(responses.map((res) => res.data.data));
+      } catch (err) {
+        setError(err.message || "Failed to fetch assignments.");
+      } finally {
         setLoading(false);
       }
     };
 
-    fetchSpecificCourseAssignment();
+    fetchAssignments();
   }, [courseId, teacherId, sectionId, days, batch]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  // const fetchSubmittedAssignments = async (searchAggaisntAssignemnt) => {
+  //   setLoading(true);
+  //   try {
 
-  // return (
-  //   <div className="w-full px-3">
-  //     <div className="my-8 bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6">
-  //       <h3 className="font-serif text-headingColor text-2xl md:text-4xl text-center border-b pb-2 border-blue-500 mb-6">
-  //         Assignments Status
-  //       </h3>
-  //       <div>
-  //         {assignments.length > 0 ? (
-  //           assignments.map((assignmentGroup, groupIndex) => (
-  //             <div key={groupIndex} className="mb-4">
-  //               {assignmentGroup.length > 0 ? (
-  //                 assignmentGroup.map((assignment, index) => (
-  //                   <div
-  //                     key={assignment._id}
-  //                     className="p-4 mb-2 bg-blue-100 border border-blue-300 rounded-lg shadow"
-  //                   >
-  //                     <p>
-  //                       <strong>{index + 1}.</strong> {assignment.assignment}
-  //                     </p>
-  //                     <p>
-  //                       <strong>Batch:</strong> {assignment.batch}
-  //                     </p>
-  //                     <p>
-  //                       <strong>Course ID:</strong> {assignment.courseId}
-  //                     </p>
-  //                   </div>
-  //                 ))
-  //               ) : (
-  //                 <p>No assignments in this group.</p>
-  //               )}
-  //             </div>
-  //           ))
-  //         ) : (
-  //           <div className="w-full text-center p-4 bg-blue-100 border border-blue-300 rounded-lg shadow hover:bg-blue-200 transition">
-  //             ------ x ------
-  //           </div>
-  //         )}
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
+  //     console.log("pass data = ", searchAggaisntAssignemnt);
+  //     const {
+  //       batch,
+  //       courseId,
+  //       sectionId,
+  //       days,
+  //       assignmentId}=searchAggaisntAssignemnt
 
+  //       console.log("batch", batch);
+  //       console.log("courseId", courseId);
+  //       console.log("sectionId", sectionId);
+  //       console.log("days", days);
+  //       console.log("assignmentId", assignmentId);
+
+  //       const submitedResponse = axios.get(
+  //         `${AppRouts.getSubmitedAssignmentForTeacher}${batch}/${courseId}/${sectionId}/${days}/${assignmentId}`
+  //       )
+
+  //       const res = await Promise.all(submitedResponse);
+  //       const submittedData = res.map((res) => res.data.data);
+  //       setSubmittedAssignments(submittedData);
+  //       console.log("submittedAssignments=", submittedAssignments );
+
+  //       console.log("submitedResponse", submitedResponse);
+  //     setLoading(false);
+
+  //   } catch (err) {
+  //     setError(err.message || "Failed to fetch submitted assignments.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+
+
+  const fetchSubmittedAssignments = async (assignment) => {
+    setLoading(true);
+    try {
+      const { batch, courseId, sectionId, days, assignmentId } = assignment;
+  
+      console.log("batch", batch);
+      console.log("courseId", courseId);
+      console.log("sectionId", sectionId);
+      console.log("days", days);
+      console.log("assignmentId", assignmentId);
+  
+      // Use a single axios call to get submitted assignments
+      const submittedResponse = await axios.get(
+        `${AppRouts.getSubmitedAssignmentForTeacher}${batch}/${courseId}/${sectionId}/${days}/${assignmentId}`
+      );
+  
+      setSubmittedAssignments(submittedResponse.data.data);  // Update state with the response data
+      console.log("submittedAssignments=", submittedResponse.data.data);
+      setLoading(false);
+
+  
+    } catch (err) {
+      setError(err.message || "Failed to fetch submitted assignments.");
+      setLoading(false);
+
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+
+  // if (loading) return <div>Loading...</div>;
+  if (error)
+    return (
+      <div>
+        <div>Error: {error}</div>
+        <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
+    );
 
   return (
     <div className="w-full px-3">
-      {/* Submited Assignments Record */}
       <div className="my-8 bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6">
         <h3 className="font-serif text-headingColor text-2xl md:text-4xl text-center border-b pb-2 border-blue-500 mb-6">
           Assignments Status
         </h3>
-  
-        {/* Dynamically Render All Arrays */}
-        {assignments && assignments.length > 0 ? (
-          assignments.map((array, arrayIndex) => (
-            <div key={arrayIndex} className="mb-8">
-              {/* Title for Each Array */}
-              <h4 className="text-xl font-bold mb-4">
-                Array {arrayIndex + 1}: Assignments
-              </h4>
-  
-              {/* Check if the Array Has Data */}
-              {array.length > 0 ? (
-                array.map((assignment, index) => (
+        {assignments.length > 0 ? (
+          assignments.map((group, index) => (
+            <div key={index} className="mb-8">
+              <div className="flex flex-col md:flex-row justify-between items-center bg-blue-100 border border-blue-300 rounded-lg my-4">
+                <h4 className="flex gap-4 w-full sm:w-1/2 text-lg items-center justify-center text-headingColor p-2 rounded-lg">
+                  Course ID: {courseId[index] || "Unknown Course"}
+                </h4>
+                <h4 className="flex gap-4 w-full sm:w-1/2 items-center justify-center p-2 rounded-lg">
+                  <span className="text-lg py-4">Total Assignments:</span>
+                  <span className="font-bold text-xl">{group.length || "0"}</span>
+                </h4>
+              </div>
+              {group.length > 0 ? (
+                group.map((assignment) => (
                   <div
-                    key={assignment._id || index} // Use unique ID or fallback to index
-                    className="p-4 bg-gray-100 border rounded mb-2"
-                  >
+                    key={assignment._id}
+                    className="p-4 bg-blue-50 border border-blue-300 rounded mb-2"
+                  > 
                     <p>
-                      <strong>{index + 1}.</strong> {assignment.assignment || "No Assignment Name"}
+                      <strong>{assignment.assignment || "Unnamed Assignment"}</strong> (
+                      {assignment.assignmentId})
                     </p>
+                    <button
+                      className="mt-2 p-2 bg-blue-200 hover:bg-blue-300 rounded"
+                      onClick={() => fetchSubmittedAssignments(assignment)}
+                    >
+                      View Submitted Assignments
+                    </button>
                   </div>
                 ))
               ) : (
                 <div className="w-full text-center p-4 bg-blue-100 border border-blue-300 rounded-lg shadow hover:bg-blue-200 transition">
-                  No assignments found in Array {arrayIndex + 1}.
+                  No assignments found.
                 </div>
               )}
             </div>
@@ -267,5 +171,5 @@ export default function AssignmentsResponse() {
       </div>
     </div>
   );
-  
 }
+
