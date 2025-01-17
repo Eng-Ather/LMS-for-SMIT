@@ -58,7 +58,7 @@ export default function Addcourse() {
     axios
       .post(AppRouts.addCourse, obj)
       .then((res) => {
-        console.log(res);
+        closeModal()
       })
       .catch((err) => {
         console.log(err.message);
