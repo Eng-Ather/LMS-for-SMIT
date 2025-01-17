@@ -6,7 +6,6 @@ import { AuthContext } from "../context/context";
 const RoleBasedNavigation = () => {
   const navigate = useNavigate();
   const { user, token, session } = useContext(AuthContext);
-  console.log(user);
 
   useEffect(() => {
     if (!user) {

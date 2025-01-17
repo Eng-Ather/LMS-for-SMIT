@@ -30,6 +30,7 @@ export default function Addcourse() {
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         setURL(data.url);
       });
   };
