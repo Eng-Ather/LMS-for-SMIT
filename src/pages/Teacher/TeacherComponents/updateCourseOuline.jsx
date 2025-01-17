@@ -48,6 +48,9 @@ const CoveredTopic = () => {
           console.log(res);
           setLoading(false);
           alert("Updating Course Outline Successfully");
+
+          // Reset the form fields after success operation
+      e.target.reset();  // This will clear the input fields
         })
         .catch((error) => {
           setLoading(false);

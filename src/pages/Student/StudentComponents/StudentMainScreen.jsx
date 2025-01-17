@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/context";
+import AssignmentsStats from "../AssignmentState";
+import CoveredCoursePercentage from "./CoveredCoursePercentage";
 
 import {
   Chart as ChartJS,
@@ -10,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
@@ -62,9 +65,9 @@ export default function StudentMainScreen() {
 
   return (
     <div className="h-screen overflow-y-scroll bg-gray-100 p-4 md:p-6">
-      {/* student profile card */}
-      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
-        <div className=" flex flex-col md:flex-row justify-between  border bg-blue-50 border-blue-300 rounded-lg p-4 md:p-6">
+      <div className="bg-blue-50 flex flex-col lg:flex-row justify-between  border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
+        {/* student profile card */}
+        <div className="w-full lg:w-1/2 flex flex-col md:flex-row justify-between rounded-lg p-4 md:p-6">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
             <img
               src="https://via.placeholder.com/100"
@@ -91,33 +94,17 @@ export default function StudentMainScreen() {
               </p>
             </div>
           </div>
+        </div>
 
-          {/* Assignment and Course Outline Stats */}
-          <div className="bg-white shadow-lg rounded-lg p-6 border-t-4 border-navbarColor flex flex-col font-serif">
-            {/* <h3 className="text-xl font-semibold text-headingColor mb-4">Assignment Submission</h3> */}
+        <div className="w-full flex flex-col justify-between lg:w-1/2 h-72">
+          <div className="w-full h-28">
+            {/* <covered corse Stats/> */}
+            <CoveredCoursePercentage />
+          </div>
 
-            <div className="flex items-center justify-between bg-blue-50 border-l-4 border-navbarColor p-2 mb-2 rounded-lg">
-              <div className="flex flex-col">
-                <span className="text-md font-bold text-headingColor">
-                  Assignments Completed:
-                </span>
-                <p className="text-lg font-bold ">
-                  {assignmentsCompleted} / {totalAssignments}
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-blue-50 border-l-4 border-navbarColor p-2 mb-3 rounded-lg">
-              <span className="text-md font-bold text-headingColor">
-                Course Coverage:
-              </span>
-              <h4 className="text-lg font-bold ">{coursePercentage}% </h4>
-            </div>
-
-            {/* Optional: Add some spacing to give the card a more structured feel */}
-            <div className="text-sm  mt-2">
-              Keep track of your progress and stay motivated!
-            </div>
+          {/* Assignment Stats */}
+          <div className="w-full">
+            <AssignmentsStats />
           </div>
         </div>
       </div>

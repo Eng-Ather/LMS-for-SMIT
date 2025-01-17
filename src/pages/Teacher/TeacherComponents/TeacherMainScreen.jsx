@@ -5,6 +5,7 @@ import AppRouts from "../../../constant/constant";
 import axios from "axios";
 import CoveredTopic from "./updateCourseOuline";
 import CreateAssignment from "./createAssignment";
+import ToolKit from "../../../components/ToolKit";
 
 export default function TeacherMainScreen() {
   const [loding, setLoading] = useState();
@@ -18,8 +19,8 @@ export default function TeacherMainScreen() {
       {data ? (
         // if user data is avilable
         <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
-          <div className="border bg-blue-50 border-blue-300 rounded-lg p-4 md:p-6">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+          <div className="flex flex-col lg:flex-row border bg-blue-50 border-blue-300 rounded-lg p-4 md:p-6 ">
+            <div className="w-full lg:w-1/2 flex flex-col md:flex-row items-center md:items-start gap-6">
               <img
                 src="https://via.placeholder.com/100"
                 alt="Student"
@@ -68,12 +69,18 @@ export default function TeacherMainScreen() {
                 </p>
               </div>
             </div>
+
+            <div className="w-full lg:w-1/2">
+            <ToolKit/>
+            </div>
           </div>
         </div>
       ) : (
         // if user data is not avilable
         <p>empty</p>
       )}
+
+
 
       {/* Update course outline  */}
       <CoveredTopic />

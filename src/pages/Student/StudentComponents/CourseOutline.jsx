@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../../context/context";
 import AppRouts from "../../../constant/constant";
+import CoveredCoursePercentage from "../StudentComponents/CoveredCoursePercentage";
 
 const CourseOutline = () => {
   const { user } = useContext(AuthContext);
@@ -65,22 +66,28 @@ const CourseOutline = () => {
     <div className=" h-screen overflow-auto">
       <div className="w-full px-3">
         {/* Covered Topics */}
-        <div className="my-8 bg-white border-t-4 border-green-300 shadow-lg rounded-lg p-4 md:p-6">
-          <h3 className="font-serif text-subHeadingColor text-2xl md:text-4xl text-center border-b pb-2 border-subHeadingColor mb-6">
-            Covered Topics
-          </h3>
+        <div className="my-8 bg-white border-t-4 border-blue-300 shadow-lg rounded-lg p-4 md:p-6">
+          <div className="flex flex-col sm:flex-row justify-around items-end border-b pb-2 border-headingColor mb-6">
+            <h3 className="w-full sm:w-1/2 font-serif text-headingColor text-2xl md:text-4xl text-center  mb-6">
+              Covered Topics
+            </h3>
+            <div className="w-full sm:w-1/2">
+              <CoveredCoursePercentage />
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {coveredTopics.length > 0 ? (
               coveredTopics.map((topic, index) => (
                 <div
                   key={index}
-                  className="p-4 bg-green-100 border border-green-300 rounded-lg shadow hover:bg-green-200 transition"
+                  className="p-4 bg-blue-100 border border-blue-300 rounded-lg shadow hover:bg-blue-200 transition"
                 >
                   <strong> {index + 1}:</strong> {topic.coveredTopic}
                 </div>
               ))
             ) : (
-              <div className="w-full text-center p-4 bg-green-100 border border-green-300 rounded-lg shadow hover:bg-green-200 transition">
+              <div className="w-full text-center p-4 bg-blue-100 border border-blue-300 rounded-lg shadow hover:bg-green-200 transition">
                 ------ x ------
               </div>
             )}

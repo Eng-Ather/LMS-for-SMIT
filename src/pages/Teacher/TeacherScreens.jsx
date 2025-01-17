@@ -25,21 +25,25 @@ export default function TeacherScreens() {
   ];
 
   return (
-    <div className="h-screen bg-gray-100 flex flex-col md:flex-row shadow">
+    // <div className="h-screen bg-gray-100 flex flex-col md:flex-row shadow">
+    <div className="min-h-screen flex flex-col md:flex-row shadow">
+
       {/******************** Side block ********************/}
-      <div className="bg-gray-200 w-full md:w-1/5">
-        <div className="flex md:hidden justify-between items-center bg-gray-300 px-4 py-2">
-          <div className="font-serif text-xl text-headingColor">TEACHER</div>
+      {/* <div className="bg-gray-200 w-full md:w-1/5"> */}
+      <div className="bg-cyan-800 w-full md:w-1/5">
+
+        <div className="flex md:hidden justify-between items-center bg-cyan-800 px-4 py-2">
+          <div className="font-serif text-white text-xl">TEACHER</div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-headingColor bg-gray-300 text-sm rounded-md "
+            className="text-white bg-cyan-700 "
           >
             {isOpen ? <CloseOutlined /> : <MenuFoldOutlined />}
           </button>
         </div>
 
         <div className={`flex-col ${isOpen ? "block" : "hidden"} md:block`}>
-          <div className="font-serif text-xl md:text-3xl text-center text-headingColor py-6 hidden md:block">
+          <div className="font-serif text-xl md:text-2xl text-center text-white py-6 hidden md:block">
             TEACHER
           </div>
 
@@ -47,18 +51,18 @@ export default function TeacherScreens() {
             <div
               key={index}
               onClick={() => navigate(item.path)}
-              className="font-serif text-md md:text-lg cursor-pointer text-headingColor bg-gray-400 border p-4 my-2 hover:text-white hover:bg-navbarColor hover:border hover:border-headingColor"
-            >
+              className="font-serif text-md md:text-lg cursor-pointer text-white bg-cyan-900 hover:border p-4 my-2  hover:border-white"
+           >
               {item.label}
             </div>
           ))}
 
-          <div className="font-serif text-md md:text-lg cursor-pointer text-headingColor bg-gray-400 border p-4 my-2">
-            <ToolKit />
-          </div>
+          {/* <div  className="font-serif text-md md:text-lg cursor-pointer text-white bg-cyan-900 hover:border p-4 my-2  hover:border-white"
+          >  <ToolKit />
+          </div> */}
 
-          <div className="font-serif text-md md:text-lg cursor-pointer text-headingColor bg-gray-400 border p-4 my-2">
-            <LogoutButton />
+          <div className="font-serif text-md md:text-lg cursor-pointer text-white bg-cyan-900 hover:border p-4 my-2  hover:border-white"
+          >  <LogoutButton />
           </div>
         </div>
       </div>
