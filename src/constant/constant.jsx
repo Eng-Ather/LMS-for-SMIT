@@ -34,6 +34,8 @@ const AppRouts = {
   addStudent: Base_URL + "/admin/addStudent",
   getAllStudents: Base_URL + "/admin/getAllStudents",
   getDynamicCourseDetails: Base_URL + "/admin/getAllCourses/",
+  addAnnouncement: Base_URL + "/admin/addAnnouncement",
+  getAllAnnouncements: Base_URL + "/admin/getAllAnnouncements",
 
   getCoveredTopics: Base_URL + "/course/get-cover-topics/",
 

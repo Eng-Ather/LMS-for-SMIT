@@ -10,6 +10,7 @@ export default function MainScreen() {
   const [Courses, setCourses] = useState([]);
   const [Teachers, setTeachers] = useState([]);
   const [Students, setStudents] = useState([]);
+  const [Announcement, setAnnouncement] = useState([]);
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -41,7 +42,6 @@ export default function MainScreen() {
       try {
         const response = await axios.get(AppRouts.getAllStudents);
         setStudents(response.data.data); // Save fetched data in state
-        console.log(Students);
       } catch (error) {
         console.error("Error fetching teachers:", error);
       }
@@ -50,21 +50,35 @@ export default function MainScreen() {
     fetchStudents();
   }, []);
 
+  useEffect(() => {
+    const fetchAnnouncements = async () => {
+      try {
+        const response = await axios.get(AppRouts.getAllAnnouncements);
+        setAnnouncement(response.data.data);
+      } catch (error) {
+        console.error("Error fetching Courses:", error);
+      }
+    };
+    fetchAnnouncements();
+  }, []);
+
   const bestTeachers = Teachers.slice(0, 4);
   const bestCourses = Courses.slice(2, 6);
+  const mainAnnouncements = Announcement.slice(0, 5);
+
   return (
     <div className="h-screen overflow-y-scroll">
       {/* main block  */}
       <div>
         <div className="grid grid-cols-3">
           <div className="m-4 bg-white text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg font-bold px-2 py-8">
-            Instructors : {Teachers.length}
+            Number of Instructors : {Teachers.length}
           </div>
           <div className="m-4 bg-white text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg font-bold px-2 py-8">
-            Courses : {Courses.length}
+            Number of Courses : {Courses.length}
           </div>
           <div className="m-4 bg-white text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg font-bold px-2 py-8">
-            Students : {Students.length}
+            Number of Students : {Students.length}
           </div>
         </div>
       </div>
@@ -86,7 +100,10 @@ export default function MainScreen() {
             {/* insructors  */}
             <h2 className="text-xl text-center">Best Instructors</h2>
             {bestTeachers.map((data, index) => (
-              <div className="flex py-1 my-1 shadow-lg bg-blue-50 rounded">
+              <div
+                key={index}
+                className="flex py-1 my-1 shadow-lg bg-blue-50 rounded"
+              >
                 <span className="text-4xl my-2 mx-2">
                   {data.image ? (
                     <img
@@ -121,7 +138,10 @@ export default function MainScreen() {
             </Link>
           </div>
           {bestCourses.map((data, index) => (
-            <div className="flex bg-blue-50 justify-between items-center m-2 p-4 shadow-lg rounded">
+            <div
+              key={index}
+              className="flex bg-blue-50 justify-between items-center m-2 p-4 shadow-lg rounded"
+            >
               <div className="flex">
                 <span className="flex text-3xl h-10 items-center justify-center rounded p-2 my-1">
                   <FaLaptopCode className="text-cyan-800" />
@@ -147,30 +167,14 @@ export default function MainScreen() {
               View All
             </Link>
           </div>
-          <div className="flex my-2 shadow-lg rounded">
-            <span className="m-2 p-2">
-              <h3 className="font-semibold">New Teacher</h3>
-              <p>Lorem ipsum dolor sit amet ducimus? Lorem, ipsum dolor.</p>
-            </span>
-          </div>
-          <div className="flex my-2 shadow-lg rounded">
-            <span className="m-2 p-2">
-              <h3 className="font-semibold">New Teacher</h3>
-              <p>Lorem ipsum dolor sit amet ducimus? Lorem, ipsum dolor.</p>
-            </span>
-          </div>
-          <div className="flex my-2 shadow-lg rounded">
-            <span className="m-2 p-2">
-              <h3 className="font-semibold">New Teacher</h3>
-              <p>Lorem ipsum dolor sit amet ducimus? Lorem, ipsum dolor.</p>
-            </span>
-          </div>
-          <div className="flex my-2 shadow-lg rounded">
-            <span className="m-2 p-2">
-              <h3 className="font-semibold">New Teacher</h3>
-              <p>Lorem ipsum dolor sit amet ducimus? Lorem, ipsum dolor.</p>
-            </span>
-          </div>
+          {mainAnnouncements.map((data, index) => (
+            <div key={index} className="flex my-2 shadow-lg rounded">
+              <span className="m-2 p-2">
+                <h3 className="font-semibold">{data.title}</h3>
+                <p>{data.description}</p>
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -53,9 +53,6 @@ function AuthContextProvider({ children }) {
         },
       });
       setUser(response.data.users); // Setting user data as global state
-      console.log(response.data.users);
-
-      console.log(user);
     } catch (err) {
       console.error("Error fetching user info: ", err);
     } finally {
@@ -69,7 +66,6 @@ function AuthContextProvider({ children }) {
     >
       {" "}
       {children}
-      {console.log(user)}
     </AuthContext.Provider>
   );
 }
