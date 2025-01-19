@@ -89,7 +89,7 @@ export default function Addcourse() {
           Total Courses : {Courses.length}
         </div>
       </div>
-      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto sm:rounded-lg">
         <div className="flex items-center justify-end flex-column flex-wrap md:flex-row md:space-y-0 bg-white dark:bg-gray-900">
           <button
             data-tooltip-id="addcourse-tooltip"

@@ -1,4 +1,4 @@
-import { CloseOutlined, PlusOutlined } from "@ant-design/icons";
+import { CloseOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import logo from "../../../images/logo.png";
 import axios from "axios";
@@ -50,7 +50,7 @@ export default function NewAnnoucements() {
 
     axios
       .post(AppRouts.addAnnouncement, obj)
-      .then((res) => console.log(res))
+      .then((res) => {})
       .catch((error) => console.log(error.message));
   };
 
@@ -182,7 +182,7 @@ export default function NewAnnoucements() {
           >
             <div className="w-1/3 p-8  flex-end">
               <img
-                className="object-cover w-full rounded-t-lg  w-60 md:rounded-none md:rounded-s-lg"
+                className="object-cover rounded-t-lg  w-60 md:rounded-none md:rounded-s-lg"
                 src={logo}
                 alt=""
               />
@@ -195,6 +195,9 @@ export default function NewAnnoucements() {
                 <h5 className="mb-2 capitalize text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {data.location} Campus at {data.time} sharp
                 </h5>
+                {/* <h5 className="mb-2 capitalize text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {data.date} 
+                </h5> */}
                 <p className="mb-3 capitalize font-normal text-gray-700 dark:text-gray-400">
                   {data.description}
                 </p>
