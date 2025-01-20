@@ -431,18 +431,21 @@ export default function MainScreen() {
       <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
        
         {/* Stats Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="bg-blue-50 text-center text-lg text-headingColor flex flex-col justify-center items-center border border-blue-300 shadow-md rounded-lg p-6">
+        <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-4">
+          <div className="bg-blue-50 text-center text-headingColor flex flex-col justify-center items-center border border-blue-300 shadow-md rounded-lg p-6">
             <span className="text-3xl">{Courses.length}</span>
-            <h3 className="font-serif font-bold">Courses</h3>
+            <h3  className="text-md md:text-2xl font-serif text-center text-headingColor ">
+            Courses</h3>
           </div>
-          <div className="bg-blue-50 text-center text-lg text-headingColor flex flex-col justify-center items-center border border-blue-300 shadow-md rounded-lg p-6">
+          <div className="bg-blue-50 text-center text-headingColor flex flex-col justify-center items-center border border-blue-300 shadow-md rounded-lg p-6">
             <span className="text-3xl">{Teachers.length}</span>
-            <h3 className="font-serif font-bold">Instructors</h3>
+            <h3  className="text-md md:text-2xl font-serif text-center text-headingColor">
+            Instructors</h3>
           </div>
-          <div className="bg-blue-50 text-center text-lg text-headingColor flex flex-col justify-center items-center border border-blue-300 shadow-md rounded-lg p-6">
+          <div className="bg-blue-50 text-center  text-headingColor flex flex-col justify-center items-center border border-blue-300 shadow-md rounded-lg p-6">
             <span className="text-3xl">{Students.length}</span>
-            <h3 className="font-serif font-bold">Students</h3>
+            <h3  className="text-md md:text-2xl font-serif text-center text-headingColor">
+            Students</h3>
           </div>
         </div>
 
