@@ -63,20 +63,8 @@ export default function AddStudent() {
     fetchStudents();
   }, []);
 
-  // const handleSearch = (e) => {
-  //   setSearchTerm(e.target.value.toLowerCase());
-
-  // };
-
-  // useEffect(()=>{
-  //   const filtereddata = Students.filter((data, index) =>
-  //     data.name.toLowerCase().includes(searchTerm)
-  //   );
-
-  //   setfilteredStudents(filtereddata)
-  // },[searchTerm])
-
-  const handleSearch = (e) => {
+  // search filter
+    const handleSearch = (e) => {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
@@ -92,6 +80,7 @@ export default function AddStudent() {
         data.courseId.join("").toLowerCase().includes(searchTerm) ||
         data.days.join("").toLowerCase().includes(searchTerm) ||
         data.sectionId.join("").toLowerCase().includes(searchTerm)
+        // data.CNICno.includes(searchTerm)
       );
     });
 
@@ -105,22 +94,14 @@ export default function AddStudent() {
   return (
     <div className="h-screen overflow-y-scroll p-2">
       <div className=" bg-white border-t-4 border-navbarColor shadow-lg rounded-lg m-2 md:m-4 p-2 md:p-6">
-        <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between ">
-          {/* Heading + Stats Container */}
-          <div className="w-full flex items-end justify-between bg-blue-50 border border-blue-300 rounded-lg p-2 my-2 md:p-3 ">
-            {/* student stats */}
-            <div className="bg-blue-100 text-center text-headingColor flex flex-col justify-center items-center border border-blue-300 shadow-md rounded-lg p-3">
-              <span className="text-3xl">{Students.length}</span>
-              <h3 className="text-md md:text-2xl font-serif text-center text-headingColor">
-                Students
-              </h3>
-            </div>
-
+          
+          {/* title bar */}
+          <div className="w-full flex flex-col sm:flex-row items-center justify-between bg-blue-50 border border-blue-300 rounded-lg p-2 my-2  ">
             {/* Add New Student */}
             <button
               data-tooltip-id="addStudent-tooltip"
               onClick={openModal}
-              className="flex items-center justify-center bg-navbarColor text-white font-serif font-bold text-base py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring-2 focus:ring-blue-300 transition duration-300"
+              className=" w-full sm:w-1/4 flex items-center justify-center bg-navbarColor text-white font-serif font-bold text-base py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring-2 focus:ring-blue-300 transition duration-300"
             >
               <ReactTooltip
                 id="addStudent-tooltip"
@@ -130,8 +111,13 @@ export default function AddStudent() {
               <PlusOutlined className="text-lg" />
               <span className="ml-2">Add New</span>
             </button>
+
+            <div className="w-full sm:w-1/2 md:w-fit  my-3 md:my-1 bg-blue-100 text-center text-headingColor  border border-blue-300 shadow-md rounded-lg p-3">
+            <span className="text-sm md:text-xl font-serif text-center text-headingColor">
+              {Students.length}{"-"} Strudents are Enrolled
+            </span>
           </div>
-        </div>
+          </div>
 
         {/* search bar */}
         <div className="w-full bg-blue-50 flex gap-2 md:gap-5 justify-between rounded-lg border border-blue-300 p-2 my-4">
@@ -147,7 +133,7 @@ export default function AddStudent() {
           {/* student stats */}
           <div className="w-1/4 bg-blue-100 text-center text-headingColor  border border-blue-300 shadow-md rounded-lg p-3">
             <span className="text-sm md:text-xl font-serif text-center text-headingColor">
-              {filteredStudents.length} result found
+              { !searchTerm? "no":     filteredStudents.length} result found
             </span>
           </div>
         </div>
@@ -159,34 +145,34 @@ export default function AddStudent() {
               key={data._id}
               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 text-center bg-blue-50 p-2 mb-4 rounded-lg hover:bg-blue-100 border border-blue-300"
             >
-              <div className="flex items-center justify-center border border-navbarColor col-span-1 md:col-span-2 lg:col-span-2 text-gray-600 p-2 rounded-lg">
+              <div className="flex items-center justify-center border border-navbarColor col-span-1 md:col-span-2 lg:col-span-2  p-2 rounded-lg">
                 <p className="text-lg font-bold">
                   {index + 1}. {data.name} s/o {data.fatherName}
                 </p>
               </div>
-              <div className="flex items-center justify-center border border-navbarColor col-span-1 text-gray-600 p-2 rounded-lg">
-                <p className="text-sm">{data.CNICno}</p>
+              <div className="flex items-center justify-center border border-navbarColor col-span-1  p-2 rounded-lg">
+                <p className="text-sm">{data.CNICno? data.CNICno :<span className="text-gray-400"> C.N.I.C missing</span>}</p>
               </div>
-              <div className="flex items-center justify-center border border-navbarColor col-span-1 text-gray-600 p-2 rounded-lg">
-                <p className="text-sm">{data.email}</p>
+              <div className="flex items-center justify-center border border-navbarColor col-span-1  p-2 rounded-lg">
+                <p className="text-sm">{data.email? data.email :<span className="text-gray-400"> email missing</span>}</p>
               </div>
-              <div className="flex items-center justify-center border border-navbarColor col-span-1 text-gray-600 p-2 rounded-lg">
+              <div className="flex items-center justify-center border border-navbarColor col-span-1  p-2 rounded-lg">
                 <p className="text-sm">
-                  {data.course}
+                  {data.course? data.course :<span className="text-gray-400"> course missing</span>}
                   <br />
-                  {data.batch}
+                  {data.batch? data.batch :<span className="text-gray-400"> batch missing</span>}
                 </p>
               </div>
-              <div className="flex items-center justify-center border border-navbarColor col-span-1 text-gray-600 p-2 rounded-lg">
+              <div className="flex items-center justify-center border border-navbarColor col-span-1  p-2 rounded-lg">
                 <p className="text-sm">
-                  {data.days}
+                  {data.days? data.days :<span className="text-gray-400"> days missing</span>}
                   <br />
-                  {data.sectionId}
+                  {data.sectionId? data.sectionId :<span className="text-gray-400"> sectionId missing</span>}
                 </p>
               </div>
-              <div className="flex items-center justify-center border border-navbarColor col-span-1 text-gray-600 p-2 rounded-lg">
+              <div className="flex items-center justify-center border border-navbarColor col-span-1  p-2 rounded-lg">
                 <p className="text-sm">
-                  {data.teacherId}
+                  {data.teacherId? data.teacherId :<span className="text-gray-400"> teacherId missing</span>}
                   <br />
                   {}
                 </p>
