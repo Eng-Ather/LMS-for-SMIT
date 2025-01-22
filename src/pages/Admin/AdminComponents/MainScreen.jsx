@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FaUser } from "react-icons/fa";
+import { GiPc } from "react-icons/gi";
+import { FaUsers, FaUserTie } from "react-icons/fa";
 import { RxAvatar } from "react-icons/rx";
 import { FaLaptopCode } from "react-icons/fa";
 import axios from "axios";
@@ -70,15 +71,18 @@ export default function MainScreen() {
     <div className="h-screen overflow-y-scroll">
       {/* main block  */}
       <div>
-        <div className="grid grid-cols-3">
-          <div className="m-4 bg-white text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg font-bold px-2 py-8">
-            Number of Instructors : {Teachers.length}
+        <div className="grid grid-cols-3 px-10">
+          <div className="m-4 bg-white justify-between text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg p-8">
+            <span>Instructors : {Teachers.length}</span>
+            <FaUserTie className="text-4xl" />
           </div>
-          <div className="m-4 bg-white text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg font-bold px-2 py-8">
-            Number of Courses : {Courses.length}
+          <div className="m-4 bg-white justify-between text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg p-8">
+            <span>Courses : {Courses.length}</span>
+            <GiPc className="text-4xl" />
           </div>
-          <div className="m-4 bg-white text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg font-bold px-2 py-8">
-            Number of Students : {Students.length}
+          <div className="m-4 bg-white justify-between text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg p-8">
+            <span>Students : {Students.length}</span>
+            <FaUsers className="text-4xl" />
           </div>
         </div>
       </div>

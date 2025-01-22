@@ -56,17 +56,11 @@ export default function AddStudent() {
 
   return (
     <div className=" h-screen overflow-y-scroll p-2">
-      <div className="m-4 flex flex-col lg:flex-row items-end justify-between my-8 bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6">
-        <h3 className="w-full lg:w-1/3 font-serif text-headingColor text-2xl md:text-3xl lg:text-4xl text-center mb-6">
-          Enrolled Students
-        </h3>
-
-        <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg font-bold p-6 ">
-          Total Students : {Students.length}
-        </div>
-      </div>
       <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto">
-        <div className="flex items-center justify-end flex-column flex-wrap md:flex-row md:space-y-0 bg-white dark:bg-gray-900">
+        <div className="flex items-center justify-end flex-column flex-wrap md:flex-row md:space-y-0 bg-white">
+          <div className="shadow rounded font-semibold p-2 my-1">
+            Total Students : {Students.length}
+          </div>
           <button
             data-tooltip-id="addInstructor-tooltip"
             onClick={openModal}

@@ -11,9 +11,6 @@ export default function NewAnnoucements() {
   const [URL, setURL] = useState();
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  
-  const cloudy_name = import.meta.env.REACT_APP_CLOUDINARYCLOUDNAME;
-  console.log(cloudy_name);
 
   const handleImage = (e) => {
     const file = e.target.files[0];
@@ -66,6 +63,9 @@ export default function NewAnnoucements() {
     };
     fetchAnnouncements();
   }, []);
+
+  const cloudy_name = import.meta.env.REACT_APP_CLOUDINARYCLOUDNAME;
+  console.log(cloudy_name);
 
   return (
     <>
