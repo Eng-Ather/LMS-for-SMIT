@@ -467,9 +467,17 @@ export default function Instructors() {
 
   return (
     <div className="h-screen overflow-y-scroll p-2">
+
+      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="flex items-center justify-end flex-column flex-wrap md:flex-row md:space-y-0 bg-white">
+          <div className="shadow rounded font-semibold p-2 my-1">
+            Total Instructors : {teachers.length}
+          </div>
+
       <div className=" bg-white border-t-4 border-navbarColor shadow-lg rounded-lg m-2 md:m-4 p-2 md:p-6">
         <div className="w-full flex flex-col sm:flex-row items-center justify-between bg-blue-50 border border-blue-300 rounded-lg p-2 my-2  ">
           {/* Add New Student */}
+
           <button
             data-tooltip-id="addInstructor-tooltip"
             onClick={openModal}

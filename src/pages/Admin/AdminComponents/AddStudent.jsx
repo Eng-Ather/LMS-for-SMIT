@@ -92,6 +92,24 @@ export default function AddStudent() {
   // );
 
   return (
+
+    <div className=" h-screen overflow-y-scroll p-2">
+      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto">
+        <div className="flex items-center justify-end flex-column flex-wrap md:flex-row md:space-y-0 bg-white">
+          <div className="shadow rounded font-semibold p-2 my-1">
+            Total Students : {Students.length}
+          </div>
+          <button
+            data-tooltip-id="addInstructor-tooltip"
+            onClick={openModal}
+            className="bg-blue-500 font-serif font-bold text-base text-white py-1 px-2 m-2 rounded-lg hover:bg-blue-700 transition duration-300"
+          >
+            <ReactTooltip
+              id="addInstructor-tooltip"
+              place="bottom"
+              content="Add Instructor"
+            />
+
     <div className="h-screen overflow-y-scroll p-2">
       <div className=" bg-white border-t-4 border-navbarColor shadow-lg rounded-lg m-2 md:m-4 p-2 md:p-6">
           
@@ -137,6 +155,7 @@ export default function AddStudent() {
             </span>
           </div>
         </div>
+
 
         {/* Filtered Student List */}
         <div className="w-full  bg-gray-50 rounded-lg shadow-md">

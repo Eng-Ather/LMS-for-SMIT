@@ -357,6 +357,11 @@
 // -------------------------------------------
 
 import React, { useEffect, useState } from "react";
+
+import { GiPc } from "react-icons/gi";
+import { FaUsers, FaUserTie } from "react-icons/fa";
+
+
 import { RxAvatar } from "react-icons/rx";
 import { FaLaptopCode } from "react-icons/fa";
 import axios from "axios";
@@ -427,6 +432,23 @@ export default function MainScreen() {
   const mainAnnouncements = Announcement.slice(0, 4);
 
   return (
+
+    <div className="h-screen overflow-y-scroll">
+      {/* main block  */}
+      <div>
+        <div className="grid grid-cols-3 px-10">
+          <div className="m-4 bg-white justify-between text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg p-8">
+            <span>Instructors : {Teachers.length}</span>
+            <FaUserTie className="text-4xl" />
+          </div>
+          <div className="m-4 bg-white justify-between text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg p-8">
+            <span>Courses : {Courses.length}</span>
+            <GiPc className="text-4xl" />
+          </div>
+          <div className="m-4 bg-white justify-between text-2xl flex justify-center items-center border-t-4 border-navbarColor shadow-lg rounded-lg p-8">
+            <span>Students : {Students.length}</span>
+            <FaUsers className="text-4xl" />
+
     <div className="h-screen overflow-y-scroll bg-gray-100 p-4 md:p-6">
       <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
        
@@ -446,6 +468,7 @@ export default function MainScreen() {
             <span className="text-3xl">{Students.length}</span>
             <h3  className="text-md md:text-2xl font-serif text-center text-headingColor">
             Students</h3>
+
           </div>
         </div>
 

@@ -2,8 +2,8 @@ import { CloseOutlined, PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AppRouts from "../../../constant/constant";
-import { Link } from "react-router";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import { Link } from "react-router";
 
 export default function Addcourse() {
   const [loading, setLoading] = useState();
@@ -15,33 +15,32 @@ export default function Addcourse() {
   const closeModal = () => setIsModalOpen(false);
 
   const handleImage = (e) => {
+    const cloud = import.meta.env.VITE_CLOUDINARY_CLOUDNAME;
     const file = e.target.files[0];
     if (!file) return console.log("Pic is Empty");
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "SMIT_LMS");
-    data.append("cloud_name", process.env.cloudinary_CloudName);
-    const res = fetch(
-      `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
-      {
-        method: "POST",
-        body: data,
-      }
-    )
+    data.append("cloud_name", cloud);
+    const res = fetch(`https://api.cloudinary.com/v1_1/${cloud}/image/upload`, {
+      method: "POST",
+      body: data,
+    })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         setURL(data.url);
       });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const topicsfromInput = e.target.topics.value;
+  const handleTopics = (e) => {
+    const topicsfromInput = e.target.value;
     // Convert string back to an array when the user modifies the input
     setTopicInputs(topicsfromInput.split(",").map((item) => item.trim()));
-    console.log(topicInputs);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
     const obj = {
       courseId: e.target.courseId.value,
@@ -59,10 +58,11 @@ export default function Addcourse() {
     axios
       .post(AppRouts.addCourse, obj)
       .then((res) => {
-        closeModal()
+        closeModal();
       })
       .catch((err) => {
         console.log(err.message);
+        closeModal();
       });
   };
 
@@ -80,6 +80,10 @@ export default function Addcourse() {
   }, []);
 
   return (
+
+    <div className=" h-screen overflow-y-scroll p-2">
+      <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto shadow-md sm:rounded-lg">
+
     <div className=" h-screen overflow-y-scroll p-10">
       <div className="m-4 flex flex-col lg:flex-row items-end justify-between my-8 bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6">
         <h3 className="w-full lg:w-1/3 font-serif text-headingColor text-2xl md:text-3xl lg:text-4xl text-center mb-6">
@@ -90,7 +94,11 @@ export default function Addcourse() {
         </div>
       </div>
       <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto sm:rounded-lg">
+
         <div className="flex items-center justify-end flex-column flex-wrap md:flex-row md:space-y-0 bg-white dark:bg-gray-900">
+          <div className="shadow rounded font-semibold p-2 my-1">
+            Total Courses : {Courses.length}
+          </div>
           <button
             data-tooltip-id="addcourse-tooltip"
             onClick={openModal}
@@ -121,8 +129,8 @@ export default function Addcourse() {
                     <input
                       type="courseId"
                       id="courseId"
-                      placeholder="js-01/gd-01"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="JS-01/GD-01"
+                      className="w-full border uppercase border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                   <div>
@@ -165,6 +173,21 @@ export default function Addcourse() {
                       id="image"
                       onChange={handleImage}
                       placeholder="TTS,MWF,Weekend,Sunday"
+                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="topics"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Topics
+                    </label>
+                    <input
+                      onChange={handleTopics}
+                      type="topics"
+                      id="topics"
+                      placeholder="ABC,ABC,ABC,ABC"
                       className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -238,20 +261,6 @@ export default function Addcourse() {
                       className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
-                  <div>
-                    <label
-                      htmlFor="topics"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Topics
-                    </label>
-                    <input
-                      type="topics"
-                      id="topics"
-                      placeholder="ABC,ABC,ABC,ABC"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
                 </div>
                 <div className="flex justify-between mt-2">
                   <span className="flex w-11/12 justify-center">
@@ -271,44 +280,31 @@ export default function Addcourse() {
           </div>
         )}
 
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-900 uppercase bg-blue-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="p-4"></th>
-              <th scope="col" className="px-6 py-3">
-                Course Name
-              </th>
-              <th scope="col" className="px-1 py-3">
-                Course ID
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
+        <div className="flex justify-center p-8">
+          <div className="grid sm:grid-cols-1 sm:gap-2 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-12 ">
             {Courses.map((data, index) => (
-              <tr
-                key={data._id}
-                className="bg-blue-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-100 dark:hover:bg-gray-600"
+              <div
+                key={index}
+                className="max-w-sm bg-white border border-b-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
               >
-                <td className="w-4 p-4">
-                  <div className="flex items-center">
-                    <span>{index + 1}.</span>
-                  </div>
-                </td>
-                <th
-                  scope="row"
-                  className="px-6 py-4 text-base font-semibold text-gray-900 whitespace-nowrap dark:text-white"
+                <Link
+                  to={`/addCourse/${data.courseId}`}
+                  className="flex justify-center"
                 >
-                  {data.courseTitle}
-                </th>
-                <td className="px-6 py-4">{data.courseId}</td>
-                <td>
-                  <Link to={`/addcourse/${data.courseId}`}>View Details</Link>
-                </td>
-              </tr>
+                  <img className="w-full h-40" src={data.image} alt="" />
+                </Link>
+                <div className="p-5">
+                  <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {data.courseTitle}
+                  </h5>
+                  <p className="text-sm font-normal text-gray-700 dark:text-gray-400">
+                    {data.courseId}
+                  </p>
+                </div>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
     </div>
   );
