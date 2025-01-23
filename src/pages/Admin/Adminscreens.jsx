@@ -22,7 +22,7 @@ function Adminscreens() {
   return (
     <div className="h-screen bg-gray-100 flex flex-col md:flex-row shadow">
       {/********************     Side block    ***************************/}
-      <div className="bg-cyan-800 w-full md:w-1/5">
+      <div className="bg-cyan-800 w-full md:w-1/6">
         <div className="flex md:hidden justify-between items-center bg-cyan-800 px-4 py-2">
           <div className="font-serif text-xl text-white">ADMIN</div>
           <button
@@ -82,7 +82,7 @@ function Adminscreens() {
       </div>
 
       {/*********************   /center box   **************************/}
-      <div className="flex flex-col flex-end w-full md:w-4/5 bg-blue-50">
+      <div className="flex flex-col flex-end w-full md:w-5/6 bg-blue-50">
         <Outlet />
       </div>
     </div>
