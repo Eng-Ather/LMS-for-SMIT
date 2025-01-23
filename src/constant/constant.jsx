@@ -46,5 +46,6 @@ const AppRouts = {
   getStudentSubmitedAssigment:
     Base_URL + "/assignment/get-submited-assignment/",
   getLeatestAssignment: Base_URL + "/assignment/get-leatest-assignment/",
+  getSubmitedAssignmentForTeacher : Base_URL + "/assignment/get-submited-assignment-for-teacher/",
 };
 export default AppRouts;

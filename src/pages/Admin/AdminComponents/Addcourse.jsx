@@ -80,219 +80,234 @@ export default function Addcourse() {
   }, []);
 
   return (
+
     <div className=" h-screen overflow-y-scroll p-2">
       <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto shadow-md sm:rounded-lg">
-        <div className="flex items-center justify-end flex-column flex-wrap md:flex-row md:space-y-0 bg-white dark:bg-gray-900">
-          <div className="shadow rounded font-semibold p-2 my-1">
+
+      <div className=" h-screen overflow-y-scroll p-10">
+        <div className="m-4 flex flex-col lg:flex-row items-end justify-between my-8 bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6">
+          <h3 className="w-full lg:w-1/3 font-serif text-headingColor text-2xl md:text-3xl lg:text-4xl text-center mb-6">
+            Courses
+          </h3>
+          <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg font-bold p-6 ">
             Total Courses : {Courses.length}
           </div>
-          <button
-            data-tooltip-id="addcourse-tooltip"
-            onClick={openModal}
-            className="bg-blue-500 font-serif font-bold text-base text-white py-1 px-2 m-2 rounded-lg hover:bg-blue-700 transition duration-300"
-          >
-            <ReactTooltip
-              id="addcourse-tooltip"
-              place="bottom"
-              content="Add Course"
-            />
-
-            <PlusOutlined />
-          </button>
         </div>
+        <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg relative overflow-x-auto sm:rounded-lg">
 
-        {isModalOpen && (
-          <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white w-full md:w-1/2 rounded-lg p-4 md:p-6 mx-6 ">
-              <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <label
-                      htmlFor="courseId"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Course Id
-                    </label>
-                    <input
-                      type="courseId"
-                      id="courseId"
-                      placeholder="JS-01/GD-01"
-                      className="w-full border uppercase border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="courseTitle"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Course Title
-                    </label>
-                    <input
-                      type="courseTitle"
-                      id="courseTitle"
-                      placeholder="Enter Course Title"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="courseDescription"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Course Description
-                    </label>
-                    <input
-                      type="courseDescription"
-                      id="courseDescription"
-                      placeholder="Enter Course Description"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="image"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Image(optional)
-                    </label>
-                    <input
-                      type="file"
-                      id="image"
-                      onChange={handleImage}
-                      placeholder="TTS,MWF,Weekend,Sunday"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="topics"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Topics
-                    </label>
-                    <input
-                      onChange={handleTopics}
-                      type="topics"
-                      id="topics"
-                      placeholder="ABC,ABC,ABC,ABC"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="teachername"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Instructor Name
-                    </label>
-                    <input
-                      type="teachername"
-                      id="teachername"
-                      placeholder="Enter Instructor Name"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="teacherid"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Instructor Id
-                    </label>
-                    <input
-                      type="teacherid"
-                      id="teacherid"
-                      placeholder="sir-user-00"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="batch"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Batch
-                    </label>
-                    <input
-                      type="batch"
-                      id="batch"
-                      placeholder="Batch-00"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="sectionid"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Section
-                    </label>
-                    <input
-                      type="sectionid"
-                      id="sectionid"
-                      placeholder="0-to-0"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="days"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Days
-                    </label>
-                    <input
-                      type="days"
-                      id="days"
-                      placeholder="TTS,MWF,Weekend,Sunday"
-                      className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                </div>
-                <div className="flex justify-between mt-2">
-                  <span className="flex w-11/12 justify-center">
-                    <button
-                      type="submit"
-                      className="w-1/2 lg:w-2/12 bg-navbarColor font-serif font-bold text-lg text-white py-2 px-4  rounded-lg hover:bg-blue-700 transition duration-300"
-                    >
-                      {loading ? "Loading..." : "Submit"}
-                    </button>
-                  </span>
-                  <span className="flex items-end w-1/12 sm:pl-10 md:pl-4 lg:pl-10">
-                    <CloseOutlined className="text-2xl" onClick={closeModal} />
-                  </span>
-                </div>
-              </form>
+          <div className="flex items-center justify-end flex-column flex-wrap md:flex-row md:space-y-0 bg-white dark:bg-gray-900">
+            <div className="shadow rounded font-semibold p-2 my-1">
+              Total Courses : {Courses.length}
             </div>
-          </div>
-        )}
+            <button
+              data-tooltip-id="addcourse-tooltip"
+              onClick={openModal}
+              className="bg-blue-500 font-serif font-bold text-base text-white py-1 px-2 m-2 rounded-lg hover:bg-blue-700 transition duration-300"
+            >
+              <ReactTooltip
+                id="addcourse-tooltip"
+                place="bottom"
+                content="Add Course"
+              />
 
-        <div className="flex justify-center p-8">
-          <div className="grid sm:grid-cols-1 sm:gap-2 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-12 ">
-            {Courses.map((data, index) => (
-              <div
-                key={index}
-                className="max-w-sm bg-white border border-b-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-              >
-                <Link
-                  to={`/addCourse/${data.courseId}`}
-                  className="flex justify-center"
-                >
-                  <img className="w-full h-40" src={data.image} alt="" />
-                </Link>
-                <div className="p-5">
-                  <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {data.courseTitle}
-                  </h5>
-                  <p className="text-sm font-normal text-gray-700 dark:text-gray-400">
-                    {data.courseId}
-                  </p>
-                </div>
+              <PlusOutlined />
+            </button>
+          </div>
+
+          {isModalOpen && (
+            <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+              <div className="bg-white w-full md:w-1/2 rounded-lg p-4 md:p-6 mx-6 ">
+                <form onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label
+                        htmlFor="courseId"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Course Id
+                      </label>
+                      <input
+                        type="courseId"
+                        id="courseId"
+                        placeholder="JS-01/GD-01"
+                        className="w-full border uppercase border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="courseTitle"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Course Title
+                      </label>
+                      <input
+                        type="courseTitle"
+                        id="courseTitle"
+                        placeholder="Enter Course Title"
+                        className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="courseDescription"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Course Description
+                      </label>
+                      <input
+                        type="courseDescription"
+                        id="courseDescription"
+                        placeholder="Enter Course Description"
+                        className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="image"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Image(optional)
+                      </label>
+                      <input
+                        type="file"
+                        id="image"
+                        onChange={handleImage}
+                        placeholder="TTS,MWF,Weekend,Sunday"
+                        className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="topics"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Topics
+                      </label>
+                      <input
+                        onChange={handleTopics}
+                        type="topics"
+                        id="topics"
+                        placeholder="ABC,ABC,ABC,ABC"
+                        className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="teachername"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Instructor Name
+                      </label>
+                      <input
+                        type="teachername"
+                        id="teachername"
+                        placeholder="Enter Instructor Name"
+                        className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="teacherid"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Instructor Id
+                      </label>
+                      <input
+                        type="teacherid"
+                        id="teacherid"
+                        placeholder="sir-user-00"
+                        className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="batch"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Batch
+                      </label>
+                      <input
+                        type="batch"
+                        id="batch"
+                        placeholder="Batch-00"
+                        className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="sectionid"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Section
+                      </label>
+                      <input
+                        type="sectionid"
+                        id="sectionid"
+                        placeholder="0-to-0"
+                        className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="days"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Days
+                      </label>
+                      <input
+                        type="days"
+                        id="days"
+                        placeholder="TTS,MWF,Weekend,Sunday"
+                        className="w-full border border-gray-300 text-base rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    <span className="flex w-11/12 justify-center">
+                      <button
+                        type="submit"
+                        className="w-1/2 lg:w-2/12 bg-navbarColor font-serif font-bold text-lg text-white py-2 px-4  rounded-lg hover:bg-blue-700 transition duration-300"
+                      >
+                        {loading ? "Loading..." : "Submit"}
+                      </button>
+                    </span>
+                    <span className="flex items-end w-1/12 sm:pl-10 md:pl-4 lg:pl-10">
+                      <CloseOutlined className="text-2xl" onClick={closeModal} />
+                    </span>
+                  </div>
+                </form>
               </div>
-            ))}
+            </div>
+          )}
+
+          <div className="flex justify-center p-8">
+            <div className="grid sm:grid-cols-1 sm:gap-2 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-12 ">
+              {Courses.map((data, index) => (
+                <div
+                  key={index}
+                  className="max-w-sm bg-white border border-b-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                >
+                  <Link
+                    to={`/addCourse/${data.courseId}`}
+                    className="flex justify-center"
+                  >
+                    <img className="w-full h-40" src={data.image} alt="" />
+                  </Link>
+                  <div className="p-5">
+                    <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      {data.courseTitle}
+                    </h5>
+                    <p className="text-sm font-normal text-gray-700 dark:text-gray-400">
+                      {data.courseId}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
   );
 }

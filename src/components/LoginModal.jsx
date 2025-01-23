@@ -109,7 +109,7 @@ function LoginModal() {
           <div className="bg-white w-full md:w-3/5 lg:w-5/12 rounded-lg p-6 mx-6 ">
             <div className="flex justify-between">
               <span className="w-11/12">
-                <h4 className="font-serif text-headingColor text-lg md:text-2xl lg:text-3xl mb-4">
+                <h4 className="font-serif text-headingColor border-b-2 border-headingColor text-center text-lg md:text-2xl lg:text-3xl mb-4">
                   Login to Your Account
                 </h4>
               </span>
