@@ -325,6 +325,7 @@ export default function AddStudent() {
           </tbody>
         </table>
       </div>
+      {/* <p></p> */}
     </div>
   );
 }
