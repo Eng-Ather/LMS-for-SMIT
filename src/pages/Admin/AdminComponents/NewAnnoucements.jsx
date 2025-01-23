@@ -11,8 +11,9 @@ export default function NewAnnoucements() {
   const [URL, setURL] = useState();
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
-  const cloudy_name = import.meta.env.cloudinary_CloudName;
+  
+  const cloudy_name = import.meta.env.REACT_APP_CLOUDINARYCLOUDNAME;
+  console.log(cloudy_name);
 
   const handleImage = (e) => {
     const file = e.target.files[0];
@@ -20,9 +21,9 @@ export default function NewAnnoucements() {
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "SMIT_LMS");
-    data.append("cloud_name", cloudy_name);
+    data.append("cloud_name", cloud_name);
     const res = fetch(
-      `https://api.cloudinary.com/v1_1/${cloudy_name}/image/upload`,
+      `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
       {
         method: "POST",
         body: data,
@@ -38,11 +39,10 @@ export default function NewAnnoucements() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-    } catch (error) {}
     const obj = {
       title: e.target.title.value,
       location: e.target.location.value,
+      date: e.target.date.value,
       time: e.target.time.value,
       url: URL,
       description: e.target.description.value,
@@ -109,6 +109,20 @@ export default function NewAnnoucements() {
                     <input
                       type="location"
                       id="location"
+                      placeholder="Enter Location"
+                      className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="date"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Date
+                    </label>
+                    <input
+                      type="date"
+                      id="date"
                       placeholder="Enter Location And Time"
                       className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
