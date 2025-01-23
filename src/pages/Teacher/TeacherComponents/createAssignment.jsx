@@ -58,9 +58,9 @@ const CreateAssignment = () => {
   };
 
   return (
-    <div className="bg-white border-t-4 border-navbarColor shadow-lg rounded-lg p-4 md:p-6 mb-6 animate-fade-in">
-      <div className="border bg-blue-50 border-blue-300 rounded-lg p-4 md:p-6">
-        <h3 className="text-lg md:text-2xl font-serif text-headingColor mb-4 border-b pb-2 border-blue-500">
+    <div className="bg-white shadow-lg rounded-lg ">
+      <div className="border bg-blue-50 border-blue-300 rounded-lg p-3">
+        <h3 className="text-lg md:text-2xl text-center font-serif text-headingColor mb-4 border-b p-2 border-blue-500">
           New Assignment
         </h3>
 
@@ -168,23 +168,23 @@ const CreateAssignment = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-around">
+          <div className="flex flex-col md:flex-row justify-between gap-2">
             {/* Assignment ID */}
             <div className="mb-4 w-full  md:w-1/4 ">
-              <label htmlFor="assignmentID">Assignment ID</label>
+              <label htmlFor="assignmentID">Assign ID</label>
               <input
                 type="text"
                 name="assignmentId"
-                placeholder="Enter Assignment ID"
+                placeholder="Assignment ID"
                 className="w-full border border-blue-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Assignment Input */}
-            <div className="mb-4 w-full md:w-1/4">
+            <div className="mb-4 w-full ">
               <label htmlFor="newAssignment">Assignment</label>
               <textarea
-                rows={2}
+                rows={1}
                 name="newAssignment"
                 placeholder="Create Assignment"
                 className="w-full  border border-blue-300 rounded-lg p-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"

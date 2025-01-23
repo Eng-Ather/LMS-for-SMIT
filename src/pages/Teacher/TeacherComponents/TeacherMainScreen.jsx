@@ -71,7 +71,7 @@ export default function TeacherMainScreen() {
             </div>
 
             <div className="w-full lg:w-1/2">
-            <ToolKit/>
+              <ToolKit />
             </div>
           </div>
         </div>
@@ -80,13 +80,17 @@ export default function TeacherMainScreen() {
         <p>empty</p>
       )}
 
+      <div className=" flex flex-col lg:flex-row gap-4  rounded-lg  ">
+        {/* Update course outline  */}
+        <div className="w-full lg:w-1/2">
+          <CoveredTopic />
+        </div>
 
-
-      {/* Update course outline  */}
-      <CoveredTopic />
-
-      {/* New Assignment  */}
-      <CreateAssignment />
+        {/* New Assignment  */}
+        <div className="w-full lg:w-1/2">
+          <CreateAssignment />
+        </div>
+      </div>
     </div>
   );
 }
