@@ -17,7 +17,7 @@ const dev_url = "http://localhost:5000";
 
 const prod_url = 'https://lms-backend-nu-blond.vercel.app';
 
-const Base_URL = dev_url;
+const Base_URL = prod_url;
 
 const AppRouts = {
   signin: Base_URL + "/user/login",
