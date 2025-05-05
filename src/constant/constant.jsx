@@ -15,7 +15,7 @@
 
 const dev_url = "http://localhost:5000";
 
-// // const prod_url = 'https://api.abc.com';
+const prod_url = 'https://lms-backend-nu-blond.vercel.app';
 
 const Base_URL = dev_url;
 
